@@ -1,6 +1,6 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "prueba de códigos",
   "main": "dist/index.js",
   "scripts": {

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 function catchErrors(info) {
+    console.log(info)
     if (['Invalid Date', '1970'].includes(info) ||!info) return console.log('\x1b[31m',`Argumento invalido! => ${info}`);
     return info;
 }
@@ -8,15 +9,16 @@ const opciones = {
     local: (time) => time || 'fr-FR',
     timeZone: (time) => time || 'Europe/Madrid',
 }
-
 export const dataDate = (time: any, args?: any) => {
+    if (isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
     if (typeof time === "string") time = parseFloat(time);
-    if (time % 1000 !== 0) time = time * 1000;
+    if (time.toString().length < 12) time = time * 1000;
     return catchErrors(new Date(opciones.time(time)).toLocaleDateString(opciones.local(args?.local), {timeZone: opciones.timeZone(args?.timeZone)}))
 }
 export const dataTime = (time: any, args?: any) => {
+    if (isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
     if (typeof time === "string") time = parseFloat(time);
-    if (time % 1000 !== 0) time = time * 1000;
+    if (time.toString().length < 12) time = time * 1000;
     return catchErrors(new Date(opciones.time(time)).toLocaleTimeString(opciones.local(args?.local), {timeZone: opciones.timeZone(args?.timeZone)}))
 }
 export const diffDate = (time1: any, time2: any) => {
@@ -26,8 +28,8 @@ export const diffDate = (time1: any, time2: any) => {
     if (isNaN(time2)) return console.log('\x1b[31m',"El segundo tiempo es invalido!");
     if (typeof time1 === "string") time1 = parseFloat(time1);
     if (typeof time2 === "string") time2 = parseFloat(time2);
-    if (time1 % 1000 !== 0) time1 = time1 * 1000;
-    if (time2 % 1000 !== 0) time2 = time2 * 1000;
+    if (time1.toString().length < 12) time1 = time1 * 1000;
+    if (time2.toString().length < 12) time2 = time2 * 1000;
     const tiempo = Math.abs(time1 - time2);
     let format = "";
     let segundos = Math.floor(tiempo / 1000) % 60;
