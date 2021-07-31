@@ -5,9 +5,10 @@
 
 <h3 id="locale">locale</h3>
 
-<div align=center>
-<b>4 de mayo de 2006 01:02:03 (24h)</b><br><br>
-<table style="width: 360px; margin: 0 auto; text-align:center">
+**`4 de mayo de 2006 01:02:03 (24h)`**
+
+<div>
+<table>
 <tr><th><center> locale </th><th><center> Time </th><th><center> Date </th></tr>
 <tr><td> ar-SA </td><td> ١:٠٢:٠٣ ص </td><td> ٦‏/٤‏/١٤٢٧ هـ </td></tr>
 <tr><td> bn-BD </td><td> ১:০২:০৩ AM </td><td> ৪/৫/২০০৬ </td></tr>
@@ -67,8 +68,8 @@
 
 <h3 id="timezone">timezone</h3>
 
-<div align=center>
-<table style="width: 100%; margin: 0 auto; text-align:center">
+<div>
+<table>
 <tr><th><center>timezone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
 <tr><td>Africa/Abidjan</td><td></td><td>+00:00</td><td>+00:00</td></tr>
