@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 function catchErrors(info) {
-    console.log(info)
     if (['Invalid Date', '1970'].includes(info) ||!info) return console.log('\x1b[31m',`Argumento invalido! => ${info}`);
     return info;
 }
