@@ -5,13 +5,37 @@ let local;
 let timeZone;
 // @ts-ignore
 export const dataDate = (tiempo: any, options: any) => {
-    !tiempo?(time = new Date()):time=tiempo;
-    !options?(local='fr-FR')&&(timeZone='Europe/Madrid'):(local=options.local)&&(timeZone=options.timeZone)&&!options.local||(local='fr-FR')&&!options.timeZone||(timeZone='Europe/Madrid');
-    return new Date(time).toLocaleDateString(local, {timeZone});
+    if (!tiempo) {
+        time = new Date()
+    } else {
+        time = tiempo
+    }
+    if (!options) {
+        local = 'fr-FR'
+        timeZone = 'Europe/Madrid'
+    } else {
+        local = options.local
+        timeZone = options.timeZone
+        if (!options.local) local = 'fr-FR'
+        if (!options.timeZone) timeZone = 'Europe/Madrid'
+    }
+    return new Date(time).toLocaleDateString(local, {timeZone})
 }
 export const dataTime = (tiempo: any, options: any) => {
-    !tiempo?(time = new Date()):time=tiempo;
-    !options?(local='fr-FR')&&(timeZone='Europe/Madrid'):(local=options.local)&&(timeZone=options.timeZone)&&!options.local||(local='fr-FR')&&!options.timeZone||(timeZone='Europe/Madrid');
+    if (!tiempo) {
+        time = new Date()
+    } else {
+        time = tiempo
+    }
+    if (!options) {
+        local = 'fr-FR'
+        timeZone = 'Europe/Madrid'
+    } else {
+        local = options.local
+        timeZone = options.timeZone
+        if (!options.local) local = 'fr-FR'
+        if (!options.timeZone) timeZone = 'Europe/Madrid'
+    }
     return new Date(time).toLocaleTimeString(local, {timeZone})
 }
 export const diffDate = (tiempo: any) => {
