@@ -2,7 +2,7 @@
 
 <div align="center">
 <a href="https://www.npmjs.com/package/util-tiempo">
-<img src="https://img.shields.io/npm/v/util-tiempo?label=Version&logo=npm&style=for-the-badge" alt="Npm version">
+<img src="https://img.shields.io/npm/v/util-tiempo?label=Version&logo=npm&style=for-the-badge">
 </a>
 <a href="https://www.npmjs.com/package/util-tiempo">
 <img alt="npm" src="https://img.shields.io/npm/dw/util-tiempo?logo=npm&style=for-the-badge">
