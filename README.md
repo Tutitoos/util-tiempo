@@ -78,10 +78,10 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 </spam>
 </summary>
 <br>
+<div align="center">
+<p><b><code>4 de mayo de 2006 01:02:03 (24h)</code></b></p>
 
-**`4 de mayo de 2006 01:02:03 (24h)`**
-
-<table style="text-align: center" align="center">
+<table style="text-align: center">
 <tr><th><center>local</th><th><center>Time (24h)</th><th><center>Time (12h)</th><th><center>Date</th></tr>
 <tr><td>ar-SA</td><td> ٠١:٠٢:٠٣</td><td> ١:٠٢:٠٣ ص</td><td>٦‏/٤‏/١٤٢٧ هـ</td></tr>
 <tr><td>bn-BD</td><td> ০১:০২:০৩</td><td> ১:০২:০৩ AM</td><td>৪/৫/২০০৬</td></tr>
@@ -137,6 +137,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 <tr><td>zh-HK</td><td> 01:02:03</td><td> 上午1:02:03</td><td>4/5/2006</td></tr>
 <tr><td>zh-TW</td><td> 01:02:03</td><td> 上午1:02:03</td><td>2006/5/4</td></tr>
 </table>
+</div>
 </details>
 </div>
 
