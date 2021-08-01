@@ -36,6 +36,9 @@ const tiempo = () => {
         timestampMadrid: dataTime(1146747723),
         timestampCanarias: dataTime(1146747723, {timeZone: "Atlantic/Canary"}),
         timestampNY: dataTime(1146747723, {local: "en-US", timeZone: "America/New_York", hour12: true}),
+        datestampMadrid: dataDate(1146747723),
+        datestampCanarias: dataDate(1146747723, {timeZone: "Atlantic/Canary"}),
+        datestampNY: dataDate(1146747723, {local: "en-US", timeZone: "America/New_York"}),
     }
 }
 ```
@@ -48,12 +51,18 @@ const tiempo = () => {
 `tiempo().timestampMadrid` => `"15:02:03"`<br>
 `tiempo().timestampCanarias` => `"14:02:03"`<br>
 `tiempo().timestampNY` => `"9:02:03 AM"`<br>
+`tiempo().datestampMadrid` => `"04/05/2006"`<br>
+`tiempo().datestampCanarias` => `"04/05/2006"`<br>
+`tiempo().datestampNY` => `"5/4/2006"`<br>
+
 
 ## Uso de las funciones
 
 <h3 id="dataTime">
 <code>dataTime(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
 </h3>
+
+> :info: Este comando te devuelve la hora según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
@@ -74,6 +83,8 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 <h3 id="dataDate">
 <code>dataDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
 </h3>
+
+> :info: Este comando te devuelve la fecha según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
