@@ -13,6 +13,11 @@
 
 Te dejamos un ejemplo del código que te puede ser util a la hora de obtener los datos.
 
+Usamos el siguiente *`timestamp`* como ejemplo para que puedas ver el formato de los datos que se obtienen.<br>
+**- timestamp (segundos):** `1146747723`<br>
+**- timestamp (milisegundos):** `1146747723000`<br>
+**- Fecha y hora (GMT):** `4 de mayo de 2006 13:02:03`
+
 ```js
 const { dataTime, dataDate, formatDate } = require("util-tiempo")
 
@@ -21,7 +26,10 @@ const tiempo = () => {
         timeMadrid: dataTime(),
         timeCanarias: dataTime(null, {timeZone: "Atlantic/Canary"}),
         dateMadrid: dataDate(),
-        dateCanarias: dataDate(null, {timeZone: "Atlantic/Canary"})
+        dateCanarias: dataDate(null, {timeZone: "Atlantic/Canary"}),
+        timestampMadrid: dataTime(1146747723),
+        timestampCanarias: dataTime(1146747723, {timeZone: "Atlantic/Canary"}),
+        timestampNY: dataTime(1146747723, {local: "en-US", timeZone: "America/New_York", hour12: true}),
     }
 }
 ```
@@ -31,6 +39,9 @@ const tiempo = () => {
 `tiempo().timeCanarias` => Hora actual en "Atlantic/Canary"<br>
 `tiempo().dateMadrid` => Fecha actual en "Europe/Madrid"<br>
 `tiempo().dateCanarias` => Fecha actual en "Atlantic/Canary"<br>
+`tiempo().timestampMadrid` => `"15:02:03"`<br>
+`tiempo().timestampCanarias` => `"14:02:03"`<br>
+`tiempo().timestampNY` => `"9:02:03 AM"`<br>
 
 ## Funciones
 
@@ -70,61 +81,61 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 
 **`4 de mayo de 2006 01:02:03 (24h)`**
 
-<table>
-<tr><th><center> local </th><th><center> Time </th><th><center> Date </th></tr>
-<tr><td> ar-SA </td><td> ١:٠٢:٠٣ ص </td><td> ٦‏/٤‏/١٤٢٧ هـ </td></tr>
-<tr><td> bn-BD </td><td> ১:০২:০৩ AM </td><td> ৪/৫/২০০৬ </td></tr>
-<tr><td> bn-IN </td><td> ১:০২:০৩ AM </td><td> ৪/৫/২০০৬ </td></tr>
-<tr><td> cs-CZ </td><td> 1:02:03 </td><td> 4. 5. 2006 </td></tr>
-<tr><td> da-DK </td><td> 01.02.03 </td><td> 4.5.2006 </td></tr>
-<tr><td> de-AT </td><td> 01:02:03 </td><td> 4.5.2006 </td></tr>
-<tr><td> de-CH </td><td> 01:02:03 </td><td> 4.5.2006 </td></tr>
-<tr><td> de-DE </td><td> 01:02:03 </td><td> 4.5.2006 </td></tr>
-<tr><td> el-GR </td><td> 1:02:03 π.μ. </td><td> 4/5/2006 </td></tr>
-<tr><td> en-AU </td><td> 1:02:03 am </td><td> 04/05/2006 </td></tr>
-<tr><td> en-CA </td><td> 1:02:03 a.m. </td><td> 2006-05-04 </td></tr>
-<tr><td> en-GB </td><td> 01:02:03 </td><td> 04/05/2006 </td></tr>
-<tr><td> en-IE </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> en-IN </td><td> 1:02:03 am </td><td> 4/5/2006 </td></tr>
-<tr><td> en-NZ </td><td> 1:02:03 am </td><td> 4/05/2006 </td></tr>
-<tr><td> en-US </td><td> 1:02:03 AM </td><td> 5/4/2006 </td></tr>
-<tr><td> en-ZA </td><td> 01:02:03 </td><td> 2006/05/04 </td></tr>
-<tr><td> es-AR </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> es-CL </td><td> 01:02:03 </td><td> 04-05-2006 </td></tr>
-<tr><td> es-CO </td><td> 1:02:03 a. m. </td><td> 4/5/2006 </td></tr>
-<tr><td> es-ES </td><td> 1:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> es-MX </td><td> 1:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> es-US </td><td> 1:02:03 a. m. </td><td> 4/5/2006 </td></tr>
-<tr><td> fi-FI </td><td> 1.02.03 </td><td> 4.5.2006 </td></tr>
-<tr><td> fr-BE </td><td> 01:02:03 </td><td> 04/05/2006 </td></tr>
-<tr><td> fr-CA </td><td> 01 h 02 min 03 s </td><td> 2006-05-04 </td></tr>
-<tr><td> fr-CH </td><td> 01:02:03 </td><td> 04.05.2006 </td></tr>
-<tr><td> fr-FR </td><td> 01:02:03 </td><td> 04/05/2006 </td></tr>
-<tr><td> he-IL </td><td> 1:02:03 </td><td> 4.5.2006 </td></tr>
-<tr><td> hi-IN </td><td> 1:02:03 am </td><td> 4/5/2006 </td></tr>
-<tr><td> hu-HU </td><td> 1:02:03 </td><td> 2006. 05. 04. </td></tr>
-<tr><td> id-ID </td><td> 01.02.03 </td><td> 4/5/2006 </td></tr>
-<tr><td> it-CH </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> it-IT </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> ja-JP </td><td> 1:02:03 </td><td> 2006/5/4 </td></tr>
-<tr><td> ko-KR </td><td> 오전 1:02:03 </td><td> 2006. 5. 4. </td></tr>
-<tr><td> nl-BE </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> nl-NL </td><td> 01:02:03 </td><td> 4-5-2006 </td></tr>
-<tr><td> no-NO </td><td> 01:02:03 </td><td> 4.5.2006 </td></tr>
-<tr><td> pl-PL </td><td> 01:02:03 </td><td> 4.05.2006 </td></tr>
-<tr><td> pt-BR </td><td> 01:02:03 </td><td> 04/05/2006 </td></tr>
-<tr><td> pt-PT </td><td> 01:02:03 </td><td> 04/05/2006 </td></tr>
-<tr><td> ro-RO </td><td> 01:02:03 </td><td> 04.05.2006 </td></tr>
-<tr><td> ru-RU </td><td> 01:02:03 </td><td> 04.05.2006 </td></tr>
-<tr><td> sk-SK </td><td> 1:02:03 </td><td> 4. 5. 2006 </td></tr>
-<tr><td> sv-SE </td><td> 01:02:03 </td><td> 2006-05-04 </td></tr>
-<tr><td> ta-IN </td><td> முற்பகல் 1:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> ta-LK </td><td> 01:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> th-TH </td><td> 01:02:03 </td><td> 4/5/2549 </td></tr>
-<tr><td> tr-TR </td><td> 01:02:03 </td><td> 04.05.2006 </td></tr>
-<tr><td> zh-CN </td><td> 上午1:02:03 </td><td> 2006/5/4 </td></tr>
-<tr><td> zh-HK </td><td> 上午1:02:03 </td><td> 4/5/2006 </td></tr>
-<tr><td> zh-TW </td><td> 上午1:02:03 </td><td> 2006/5/4 </td></tr>
+<table style="text-align: center">
+<tr><th><center>local</th><th><center>Time (24h)</th><th><center>Time (12h)</th><th><center>Date</th></tr>
+<tr><td>ar-SA</td><td> ٠١:٠٢:٠٣</td><td> ١:٠٢:٠٣ ص</td><td>٦‏/٤‏/١٤٢٧ هـ</td></tr>
+<tr><td>bn-BD</td><td> ০১:০২:০৩</td><td> ১:০২:০৩ AM</td><td>৪/৫/২০০৬</td></tr>
+<tr><td>bn-IN</td><td> ০১:০২:০৩</td><td> ১:০২:০৩ AM</td><td>৪/৫/২০০৬</td></tr>
+<tr><td>cs-CZ</td><td> 1:02:03</td><td> 1:02:03 dop.</td><td>4. 5. 2006</td></tr>
+<tr><td>da-DK</td><td> 01.02.03</td><td> 1.02.03 AM</td><td>4.5.2006</td></tr>
+<tr><td>de-AT</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4.5.2006</td></tr>
+<tr><td>de-CH</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4.5.2006</td></tr>
+<tr><td>de-DE</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4.5.2006</td></tr>
+<tr><td>el-GR</td><td> 01:02:03</td><td> 1:02:03 π.μ.</td><td>4/5/2006</td></tr>
+<tr><td>en-AU</td><td> 01:02:03</td><td> 1:02:03 am</td><td>04/05/2006</td></tr>
+<tr><td>en-CA</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>2006-05-04</td></tr>
+<tr><td>en-GB</td><td> 01:02:03</td><td> 1:02:03 am</td><td>04/05/2006</td></tr>
+<tr><td>en-IE</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>4/5/2006</td></tr>
+<tr><td>en-IN</td><td> 01:02:03</td><td> 1:02:03 am</td><td>4/5/2006</td></tr>
+<tr><td>en-NZ</td><td> 01:02:03</td><td> 1:02:03 am</td><td>4/05/2006</td></tr>
+<tr><td>en-US</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>5/4/2006</td></tr>
+<tr><td>en-ZA</td><td> 01:02:03</td><td> 1:02:03 am</td><td>2006/05/04</td></tr>
+<tr><td>es-AR</td><td> 01:02:03</td><td> 01:02:03</td><td>4/5/2006</td></tr>
+<tr><td>es-CL</td><td> 01:02:03</td><td> 1:02:03 a. m.</td><td>04-05-2006</td></tr>
+<tr><td>es-CO</td><td> 1:02:03</td><td> 1:02:03 a. m.</td><td>4/5/2006</td></tr>
+<tr><td>es-ES</td><td> 1:02:03</td><td> 1:02:03 a. m.</td><td>4/5/2006</td></tr>
+<tr><td>es-MX</td><td> 1:02:03</td><td> 1:02:03 a. m.</td><td>4/5/2006</td></tr>
+<tr><td>es-US</td><td> 01:02:03</td><td> 1:02:03 a. m.</td><td>4/5/2006</td></tr>
+<tr><td>fi-FI</td><td> 1.02.03</td><td> 1.02.03 ap.</td><td>4.5.2006</td></tr>
+<tr><td>fr-BE</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>04/05/2006</td></tr>
+<tr><td>fr-CA</td><td> 01 h 02 min 03 s</td><td> 1 h 02 min 03 s a.m.</td><td>2006-05-04</td></tr>
+<tr><td>fr-CH</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>04.05.2006</td></tr>
+<tr><td>fr-FR</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>04/05/2006</td></tr>
+<tr><td>he-IL</td><td> 1:02:03</td><td> 1:02:03 לפנה״צ</td><td>4.5.2006</td></tr>
+<tr><td>hi-IN</td><td> 01:02:03</td><td> 1:02:03 am</td><td>4/5/2006</td></tr>
+<tr><td>hu-HU</td><td> 1:02:03</td><td> de. 1:02:03</td><td>2006. 05. 04.</td></tr>
+<tr><td>id-ID</td><td> 01.02.03</td><td> 1.02.03 AM</td><td>4/5/2006</td></tr>
+<tr><td>it-CH</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4/5/2006</td></tr>
+<tr><td>it-IT</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4/5/2006</td></tr>
+<tr><td>ja-JP</td><td> 1:02:03</td><td> 午前1:02:03</td><td>2006/5/4</td></tr>
+<tr><td>ko-KR</td><td> 1시 2분 3초</td><td> 오전 1:02:03</td><td>2006. 5. 4.</td></tr>
+<tr><td>nl-BE</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>4/5/2006</td></tr>
+<tr><td>nl-NL</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>4-5-2006</td></tr>
+<tr><td>no-NO</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>4.5.2006</td></tr>
+<tr><td>pl-PL</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>4.05.2006</td></tr>
+<tr><td>pt-BR</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>04/05/2006</td></tr>
+<tr><td>pt-PT</td><td> 01:02:03</td><td> 1:02:03 da manhã</td><td>04/05/2006</td></tr>
+<tr><td>ro-RO</td><td> 01:02:03</td><td> 1:02:03 a.m.</td><td>04.05.2006</td></tr>
+<tr><td>ru-RU</td><td> 01:02:03</td><td> 1:02:03 AM</td><td>04.05.2006</td></tr>
+<tr><td>sk-SK</td><td> 1:02:03</td><td> 1:02:03 AM</td><td>4. 5. 2006</td></tr>
+<tr><td>sv-SE</td><td> 01:02:03</td><td> 1:02:03 fm</td><td>2006-05-04</td></tr>
+<tr><td>ta-IN</td><td> 01:02:03</td><td> முற்பகல் 1:02:03</td><td>4/5/2006</td></tr>
+<tr><td>ta-LK</td><td> 01:02:03</td><td> முற்பகல் 1:02:03</td><td>4/5/2006</td></tr>
+<tr><td>th-TH</td><td> 01:02:03</td><td> 1:02:03 ก่อนเที่ยง</td><td>4/5/2549</td></tr>
+<tr><td>tr-TR</td><td> 01:02:03</td><td> ÖÖ 1:02:03</td><td>04.05.2006</td></tr>
+<tr><td>zh-CN</td><td> 01:02:03</td><td> 上午1:02:03</td><td>2006/5/4</td></tr>
+<tr><td>zh-HK</td><td> 01:02:03</td><td> 上午1:02:03</td><td>4/5/2006</td></tr>
+<tr><td>zh-TW</td><td> 01:02:03</td><td> 上午1:02:03</td><td>2006/5/4</td></tr>
 </table>
 </details>
 </div>
@@ -138,7 +149,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 </summary>
 <br>
 
-<table>
+<table style="text-align: center">
 <tr><th><center>timeZone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
 <tr><td>Africa/Abidjan</td><td></td><td>+00:00</td><td>+00:00</td></tr>
