@@ -6,13 +6,9 @@
 <h3 id="locale">locale</h3>
 
 <div>
-<style>
-       spam.hover {text-decoration: none; color: blue;}
-       spam.hover:hover {text-decoration: underline;}
-</style>
 <details>
 <summary>
-<spam class="hover">
+<spam style="color: blue;">
 Mostrar/Ocultar
 </spam>
 </summary>
@@ -82,17 +78,14 @@ Mostrar/Ocultar
 <h3 id="timezone">timezone</h3>
 
 <div>
-<style>
-       spam.hover {text-decoration: none; color: blue;}
-       spam.hover:hover {text-decoration: underline;}
-</style>
 <details>
 <summary>
-<spam class="hover">
+<spam style="color: blue;">
 Mostrar/Ocultar
 </spam>
 </summary>
 <br>
+
 <table>
 <tr><th><center>timezone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
