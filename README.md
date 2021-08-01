@@ -62,7 +62,8 @@ const tiempo = () => {
 <code>dataTime(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
 </h3>
 
-> ℹ Este comando te devuelve la hora según el formato le hayas pasado.
+> **ℹ DESCRIPCIÓN:**<br> 
+> Este comando te devuelve la hora según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
@@ -84,7 +85,8 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 <code>dataDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
 </h3>
 
-> ℹ Este comando te devuelve la fecha según el formato le hayas pasado.
+> **ℹ DESCRIPCIÓN:**<br> 
+> Este comando te devuelve la fecha según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
