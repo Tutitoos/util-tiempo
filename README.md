@@ -9,6 +9,12 @@
 </a><br><br>
 </div>
 
+## Funciones disponibles
+* [`dataTime()`](#dataTime)
+* [`dataDate()`](#dataDate)
+* [`formatDate()`](#formatDate)
+* [`diffDate()`](#formatDate)
+
 <h2 id="ejemplo">Ejemplo</h2>
 
 Te dejamos un ejemplo del código que te puede ser util a la hora de obtener los datos.
@@ -43,7 +49,7 @@ const tiempo = () => {
 `tiempo().timestampCanarias` => `"14:02:03"`<br>
 `tiempo().timestampNY` => `"9:02:03 AM"`<br>
 
-## Funciones
+## Uso de las funciones
 
 <h3 id="dataTime">
 <code>dataTime(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
@@ -57,7 +63,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
   * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*, *`hour12`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
 * **local: &lt;formato&gt;** 
   * Puedes revisar la lista de [**formatos locales**](#local).
-  * Si no se define este argumento, tomará el formato *`HH:MM:SS`*
+  * Si no se define este argumento, tomará el formato *`hh:mm:ss`*
 * **timeZone: &lt;zonahoraria&gt;** 
   * Puedes revisar la lista de [**zonas horarias**](#timezone).
   * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
@@ -65,6 +71,22 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
   * Si quieres que el formato de la hora sea en *`12h`*, define este argumento como *`true`*.
   * Si quieres que el formato de la hora sea en *`24h`*, no definas el argumento o defínelo como *`false`*.
 
+<h3 id="dataDate">
+<code>dataDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
+</h3>
+
+Todos los argumentos son opcionales.<br>
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo&gt;**
+  * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
+  * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
+  * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
+* **local: &lt;formato&gt;** 
+  * Puedes revisar la lista de [**formatos locales**](#local).
+  * Si no se define este argumento, tomará el formato *`DD/MM/YYYY`*
+* **timeZone: &lt;zonahoraria&gt;** 
+  * Puedes revisar la lista de [**zonas horarias**](#timezone).
+  * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
 
 ## Variables del tiempo
 
