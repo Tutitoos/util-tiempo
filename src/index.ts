@@ -55,10 +55,10 @@ export const formatDate = (time?: any, args?: any) => {
     }
 }
 export const diffDate = (time1: any, time2: any) => {
-    if (!time1) return console.log('\x1b[31m',"Falta el primer tiempo!");
-    if (!time2) return console.log('\x1b[31m',"Falta el segundo tiempo!");
-    if (isNaN(time1)) return console.log('\x1b[31m',"El primer tiempo es invalido!");
-    if (isNaN(time2)) return console.log('\x1b[31m',"El segundo tiempo es invalido!");
+    if (time1 !== 0 && !time1) return console.log('\x1b[31m',"Falta el primer tiempo!");
+    if (time2 !== 0 && !time2) return console.log('\x1b[31m',"Falta el segundo tiempo!");
+    if (time1 !== 0 && isNaN(time1)) return console.log('\x1b[31m',"El primer tiempo es invalido!");
+    if (time2 !== 0 && isNaN(time2)) return console.log('\x1b[31m',"El segundo tiempo es invalido!");
     if (typeof time1 === "string") time1 = parseFloat(time1);
     if (typeof time2 === "string") time2 = parseFloat(time2);
     if (time1.toString().length < 12) time1 = time1 * 1000;
