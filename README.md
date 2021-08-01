@@ -184,8 +184,8 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 [Mostrar/Ocultar]
 </summary>
 <br>
-
-<table style="text-align: center" align="center">
+<div align="center">
+<table style="text-align: center">
 <tr><th><center>timeZone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
 <tr><td>Africa/Abidjan</td><td></td><td>+00:00</td><td>+00:00</td></tr>
@@ -783,6 +783,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 <tr><td>WET</td><td></td><td>+00:00</td><td>+01:00</td></tr>
 <tr><td>Zulu</td><td></td><td>+00:00</td><td>+00:00</td></tr>
 </table>
+</div>
 </details>
 </div>
 
