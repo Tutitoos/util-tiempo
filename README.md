@@ -1,15 +1,69 @@
 # util-tiempo
 
-* [**locale**](#locale)
-* [**timezone**](#timezone)
+<div style="text-align: center">
+<a href="https://www.npmjs.com/package/util-tiempo">
+<img src="https://img.shields.io/npm/v/util-tiempo?label=Version&logo=npm&style=for-the-badge" alt="Npm version">
+</a>
+<a href="https://www.npmjs.com/package/util-tiempo">
+<img alt="npm" src="https://img.shields.io/npm/dw/util-tiempo?logo=npm&style=for-the-badge">
+</a><br><br>
+</div>
 
-<h3 id="locale">locale</h3>
+<h2 id="ejemplo">Ejemplo</h2>
+
+Te dejamos un ejemplo del código que te puede ser util a la hora de obtener los datos.
+
+```js
+const { dataTime, dataDate, formatDate } = require("util-tiempo")
+
+const tiempo = () => {
+    return {
+        timeMadrid: dataTime(),
+        timeCanarias: dataTime(null, {timeZone: "Atlantic/Canary"}),
+        dateMadrid: dataDate(),
+        dateCanarias: dataDate(null, {timeZone: "Atlantic/Canary"})
+    }
+}
+```
+
+**\- Resultados del código:**<br>
+`tiempo().timeMadrid` => Hora actual en "Europe/Madrid"<br>
+`tiempo().timeCanarias` => Hora actual en "Atlantic/Canary"<br>
+`tiempo().dateMadrid` => Fecha actual en "Europe/Madrid"<br>
+`tiempo().dateCanarias` => Fecha actual en "Atlantic/Canary"<br>
+
+## Funciones
+
+<h3 id="dataTime">
+<code>dataTime(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
+</h3>
+
+Todos los argumentos son opcionales.<br>
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo&gt;**
+  * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
+  * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
+  * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*, *`hour12`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
+* **local: &lt;formato&gt;** 
+  * Puedes revisar la lista de [**formatos locales**](#local).
+  * Si no se define este argumento, tomará el formato *`HH:MM:SS`*
+* **timeZone: &lt;zonahoraria&gt;** 
+  * Puedes revisar la lista de [**zonas horarias**](#timezone).
+  * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
+* **hour12: &lt;true/false&gt;** 
+  * Si quieres que el formato de la hora sea en *`12h`*, define este argumento como *`true`*.
+  * Si quieres que el formato de la hora sea en *`24h`*, no definas el argumento o defínelo como *`false`*.
+
+
+## Variables del tiempo
+
+<h3 id="local">Formatos locales</h3>
 
 <div>
 <details>
 <summary>
-<spam style="color: blue;">
-Mostrar/Ocultar
+<spam >
+[Mostrar/Ocultar]
 </spam>
 </summary>
 <br>
@@ -17,7 +71,7 @@ Mostrar/Ocultar
 **`4 de mayo de 2006 01:02:03 (24h)`**
 
 <table>
-<tr><th><center> locale </th><th><center> Time </th><th><center> Date </th></tr>
+<tr><th><center> local </th><th><center> Time </th><th><center> Date </th></tr>
 <tr><td> ar-SA </td><td> ١:٠٢:٠٣ ص </td><td> ٦‏/٤‏/١٤٢٧ هـ </td></tr>
 <tr><td> bn-BD </td><td> ১:০২:০৩ AM </td><td> ৪/৫/২০০৬ </td></tr>
 <tr><td> bn-IN </td><td> ১:০২:০৩ AM </td><td> ৪/৫/২০০৬ </td></tr>
@@ -75,19 +129,17 @@ Mostrar/Ocultar
 </details>
 </div>
 
-<h3 id="timezone">timezone</h3>
+<h3 id="timezone">Zonas horarias</h3>
 
 <div>
 <details>
 <summary>
-<spam style="color: blue;">
-Mostrar/Ocultar
-</spam>
+[Mostrar/Ocultar]
 </summary>
 <br>
 
 <table>
-<tr><th><center>timezone</th><th><center>Portion of country covered
+<tr><th><center>timeZone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
 <tr><td>Africa/Abidjan</td><td></td><td>+00:00</td><td>+00:00</td></tr>
 <tr><td>Africa/Accra</td><td></td><td>+00:00</td><td>+00:00</td></tr>
