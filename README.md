@@ -5,9 +5,21 @@
 
 <h3 id="locale">locale</h3>
 
+<div>
+<style>
+       spam.hover {text-decoration: none; color: blue;}
+       spam.hover:hover {text-decoration: underline;}
+</style>
+<details>
+<summary>
+<spam class="hover">
+Mostrar/Ocultar
+</spam>
+</summary>
+<br>
+
 **`4 de mayo de 2006 01:02:03 (24h)`**
 
-<div>
 <table>
 <tr><th><center> locale </th><th><center> Time </th><th><center> Date </th></tr>
 <tr><td> ar-SA </td><td> ١:٠٢:٠٣ ص </td><td> ٦‏/٤‏/١٤٢٧ هـ </td></tr>
@@ -64,11 +76,23 @@
 <tr><td> zh-HK </td><td> 上午1:02:03 </td><td> 4/5/2006 </td></tr>
 <tr><td> zh-TW </td><td> 上午1:02:03 </td><td> 2006/5/4 </td></tr>
 </table>
+</details>
 </div>
 
 <h3 id="timezone">timezone</h3>
 
 <div>
+<style>
+       spam.hover {text-decoration: none; color: blue;}
+       spam.hover:hover {text-decoration: underline;}
+</style>
+<details>
+<summary>
+<spam class="hover">
+Mostrar/Ocultar
+</spam>
+</summary>
+<br>
 <table>
 <tr><th><center>timezone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
@@ -667,4 +691,6 @@
 <tr><td>WET</td><td></td><td>+00:00</td><td>+01:00</td></tr>
 <tr><td>Zulu</td><td></td><td>+00:00</td><td>+00:00</td></tr>
 </table>
+</details>
 </div>
+
