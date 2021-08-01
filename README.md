@@ -1,6 +1,6 @@
 # util-tiempo
 
-<div style="text-align: center">
+<div align="center">
 <a href="https://www.npmjs.com/package/util-tiempo">
 <img src="https://img.shields.io/npm/v/util-tiempo?label=Version&logo=npm&style=for-the-badge" alt="Npm version">
 </a>
@@ -81,7 +81,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 
 **`4 de mayo de 2006 01:02:03 (24h)`**
 
-<table style="text-align: center">
+<table style="text-align: center" align="center">
 <tr><th><center>local</th><th><center>Time (24h)</th><th><center>Time (12h)</th><th><center>Date</th></tr>
 <tr><td>ar-SA</td><td> ٠١:٠٢:٠٣</td><td> ١:٠٢:٠٣ ص</td><td>٦‏/٤‏/١٤٢٧ هـ</td></tr>
 <tr><td>bn-BD</td><td> ০১:০২:০৩</td><td> ১:০২:০৩ AM</td><td>৪/৫/২০০৬</td></tr>
@@ -149,7 +149,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 </summary>
 <br>
 
-<table style="text-align: center">
+<table style="text-align: center" align="center">
 <tr><th><center>timeZone</th><th><center>Portion of country covered
 </th><th><center>UTC offset ±hh:mm</th><th><center>UTC DST offset ±hh:mm</th></tr>
 <tr><td>Africa/Abidjan</td><td></td><td>+00:00</td><td>+00:00</td></tr>
