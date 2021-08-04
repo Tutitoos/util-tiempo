@@ -21,7 +21,6 @@ const opciones = {
     hour12: (hour12?: boolean) => hour12 || false,
     format: (format?: string) => format || undefined // Default "{hh}:{mm}:{ss} {DD}/{MM}/{YYYY}"
 }
-
 export const dataDate = (time?: any, args?: any) => {
     if (time && isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
     if (typeof time === "string") time = parseFloat(time);
@@ -81,20 +80,16 @@ export const formatDate = (time?: any, args?: any) => {
 
         }
         return catchErrors(content)
-    } else {
-        return `${dataDate(time, args)} ${dataTime(time, args)}`
-    }
+    } else return `${dataDate(time, args)} ${dataTime(time, args)}`
 }
-
 export const diffDate = (time1: any, time2: any) => {
-    if (!time2) time2 = 0
+    if (!time2) time2 = 0;
     if (time1 !== 0 && !time1) return console.log('\x1b[31m',"Falta el primer tiempo!");
     if (time1 !== 0 && isNaN(time1)) return console.log('\x1b[31m',"El primer tiempo es invalido!");
     if (time2 !== 0 && isNaN(time2)) return console.log('\x1b[31m',"El segundo tiempo es invalido!");
     if (typeof time1 === "string") time1 = parseFloat(time1);
     if (typeof time2 === "string") time2 = parseFloat(time2);
-    if (time1.toString().length < 12) time1 = time1 * 1000;
-    if (time2.toString().length < 12) time2 = time2 * 1000;
+    //if (time1.toString().length < 12) time1 = time1 * 1000;
     const tiempo = Math.abs(time1 - time2);
     let uptime = "";
     let segundos = Math.floor(tiempo / s) % 60;
