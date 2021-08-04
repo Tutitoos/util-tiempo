@@ -1,19 +1,22 @@
 # util-tiempo
-
+## ***util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!***
+---
+<br>
 <div align="center">
 <a href="https://www.npmjs.com/package/util-tiempo">
 <img src="https://img.shields.io/npm/v/util-tiempo?label=Version&logo=npm&style=for-the-badge">
 </a>
 <a href="https://www.npmjs.com/package/util-tiempo">
 <img alt="npm" src="https://img.shields.io/npm/dw/util-tiempo?logo=npm&style=for-the-badge">
-</a><br><br>
+</a><br><a href="https://www.npmjs.com/package/util-tiempo"><a href="https://nodei.co/npm/util-tiempo/"><img src="https://nodei.co/npm/util-tiempo.png?downloads=true&downloadRank=true&stars=true"></a></a><br><br>
 </div>
 
 ## Funciones disponibles
 * [`dataTime()`](#dataTime)
 * [`dataDate()`](#dataDate)
 * [`formatDate()`](#formatDate)
-* [`diffDate()`](#formatDate)
+* [`diffDate()`](#diffDate)
+* [`formatMs()`](#formatMs)
 
 <h2 id="ejemplo">Ejemplo</h2>
 
@@ -66,18 +69,19 @@ const tiempo = () => {
 > Este comando te devuelve la hora según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
-* **&lt;tiempo&gt;**
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo&gt;** *[OPCIONAL]*
   * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
   * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
   * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*, *`hour12`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
-* **local: &lt;formato&gt;** 
+* **local: &lt;formato&gt;** *[OPCIONAL]*
   * Puedes revisar la lista de [**formatos locales**](#local).
   * Si no se define este argumento, tomará el formato *`hh:mm:ss`*
-* **timeZone: &lt;zonahoraria&gt;** 
+* **timeZone: &lt;zonahoraria&gt;** *[OPCIONAL]*
   * Puedes revisar la lista de [**zonas horarias**](#timezone).
   * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
-* **hour12: &lt;true/false&gt;** 
+* **hour12: &lt;true/false&gt;** *[OPCIONAL]*
   * Si quieres que el formato de la hora sea en *`12h`*, define este argumento como *`true`*.
   * Si quieres que el formato de la hora sea en *`24h`*, no definas el argumento o defínelo como *`false`*.
 
@@ -89,17 +93,80 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No e
 > Este comando te devuelve la fecha según el formato le hayas pasado.
 
 Todos los argumentos son opcionales.<br>
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>***No escribas en los argumentos los símbolos `< >`.***
-* **&lt;tiempo&gt;**
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo&gt;** *[OPCIONAL]*
   * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
   * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
   * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
-* **local: &lt;formato&gt;** 
+* **local: &lt;formato&gt;** *[OPCIONAL]*
   * Puedes revisar la lista de [**formatos locales**](#local).
   * Si no se define este argumento, tomará el formato *`DD/MM/YYYY`*
-* **timeZone: &lt;zonahoraria&gt;** 
+* **timeZone: &lt;zonahoraria&gt;** *[OPCIONAL]*
   * Puedes revisar la lista de [**zonas horarias**](#timezone).
   * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
+
+<h3 id="formatDate">
+<code>formatDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
+</h3>
+
+> **ℹ DESCRIPCIÓN:**<br> 
+> Este comando te devuelve la fecha según el formato le hayas pasado.
+
+Todos los argumentos son opcionales.<br>
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo&gt;** *[OPCIONAL]*
+  * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
+  * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
+  * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
+* **local: &lt;formato&gt;** *[OPCIONAL]*
+  * Puedes revisar la lista de [**formatos locales**](#local).
+  * Si no se define este argumento, tomará el formato *`DD/MM/YYYY`*
+* **timeZone: &lt;zonahoraria&gt;** *[OPCIONAL]*
+  * Puedes revisar la lista de [**zonas horarias**](#timezone).
+  * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
+
+<h3 id="diffDate">
+<code>diffDate(&lt;tiempo1&gt;, &lt;tiempo2&gt;)</code>
+</h3>
+
+> **ℹ DESCRIPCIÓN:**<br> 
+> Este comando te devuelve la diferencia entre dos fechas o cuanto tiempo son los milisegundos que le pasas.
+
+> **⚠ ADVERTENCIA:**<br> 
+> Los tiempos tienen que estar en ***`milisegundos`***. En el caso de que estén en *`segundos`*, basta con multiplicarlos por mil (*`*1000`*).
+
+El segundo tiempo es opcional.<br>
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;tiempo1&gt;**
+  * El tiempo lo puedes definir como *`timestamp`*, este debe estar en *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools'). También puedes añadirle una cantidad de milisegundos en concreto.
+* **&lt;tiempo2&gt;** *[OPCIONAL]*
+  * El tiempo lo puedes definir como *`timestamp`*, este debe estar en *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools'). También puedes añadirle una cantidad de milisegundos en concreto.
+  * Si se define este argumento, el código calculará la diferencia entre los dos tiempos y te devolverá el resultado con la diferencia.
+
+<h3 id="formatMs">
+<code>formatMS(&lt;argumento&gt;)</code>
+</h3>
+
+> **ℹ DESCRIPCIÓN:**<br> 
+> Convierte la cantidad de tiempo que pasas como argumento en milisegundos.
+
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;argumento&gt;**
+  * Añade la cantidad de tiempo deseada con su unidad de tiempo `{num}{tiempo}`. Por ejemplo, para que te devuelva la cantidad de milisegundos de `1 año` debes de pasar como argumento `1y` .
+  * Si no añades la unidad de tiempo, el código reconocerá que la cantidad de tiempo es en *`milisegundos`*.
+  * **Unidades de tiempo:**
+    * Años: `years`, `year`, `yrs`, `yr`, `y`
+    * Meses: `months`, `month`, `mth`, `mh`
+    * Semanas: `weeks`, `week`, `w`
+    * Días: `days`, `day`, `d`
+    * Horas: `hours`, `hour`, `hrs`, `hr`, `h`
+    * Minutos: `minutes`, `minute`, `mins`, `min`, `h`
+    * Segundos: `seconds`, `second`, `secs`, `sec`, `s`
+    * Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms` o no añadas la unidad de tiempo
 
 ## Variables del tiempo
 
