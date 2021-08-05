@@ -28,20 +28,33 @@ Usamos el siguiente *`timestamp`* como ejemplo para que puedas ver el formato de
 **- Fecha y hora (GMT):** `4 de mayo de 2006 13:02:03`
 
 ```js
-const { dataTime, dataDate, formatDate } = require("util-tiempo")
+const { dataTime, dataDate, formatDate, diffDate } = require("util-tiempo")
 
 const tiempo = () => {
     return {
         timeMadrid: dataTime(),
         timeCanarias: dataTime(null, {timeZone: "Atlantic/Canary"}),
-        dateMadrid: dataDate(),
-        dateCanarias: dataDate(null, {timeZone: "Atlantic/Canary"}),
         timestampMadrid: dataTime(1146747723),
         timestampCanarias: dataTime(1146747723, {timeZone: "Atlantic/Canary"}),
         timestampNY: dataTime(1146747723, {local: "en-US", timeZone: "America/New_York", hour12: true}),
+        dateMadrid: dataDate(),
+        dateCanarias: dataDate(null, {timeZone: "Atlantic/Canary"}),
         datestampMadrid: dataDate(1146747723),
         datestampCanarias: dataDate(1146747723, {timeZone: "Atlantic/Canary"}),
         datestampNY: dataDate(1146747723, {local: "en-US", timeZone: "America/New_York"}),
+        defaultformat: formatDate(),
+        defaultfortmattimestamp: formatDate(1146747723),
+        timedotformat: formatDate(1146747723, {format: "{hh}.{mm}.{ss}"}),
+        dateminusformat: formatDate(1146747723, {format: "{D}-{M}-{YY}"}), // REVISAR CÓDIGO, NO SALE COMO SE ESPERABA
+        conbinedformat: formatDate(1146747723, {local: "en-US", timeZone: "America/New_York", hour12: true, format: "{h}:{mm}:{ss} {apm} - {DD}/{MM}/{YYYY}"}), //REVISAR CÓDIGO, NO SALE COMO SE ESPERABA
+        diff1: diffDate(1146747723, 1146747723 + 76500000), // 76500000 milisegundos son 21 hora y 15 minutos más
+        diff2: diffDate(76500000),
+        diff3: diffDate(76500), // El código detecta en esta función que los datos que le hemos pasado son milisegundos
+        diff4: diffDate(76500 * 1000), // Multiplicando  por 1000, podemos pasar los datos de segundos a milisegundos
+        toMs1: formatMs("1s"),
+        toMs2: formatMs("1m"),
+        toMS3: formatMs("1w") + formatMs("2h"),
+        toMS4: formatMs(252),
     }
 }
 ```
@@ -49,15 +62,27 @@ const tiempo = () => {
 **\- Resultados del código:**<br>
 `tiempo().timeMadrid` => Hora actual en "Europe/Madrid"<br>
 `tiempo().timeCanarias` => Hora actual en "Atlantic/Canary"<br>
-`tiempo().dateMadrid` => Fecha actual en "Europe/Madrid"<br>
-`tiempo().dateCanarias` => Fecha actual en "Atlantic/Canary"<br>
 `tiempo().timestampMadrid` => `"15:02:03"`<br>
 `tiempo().timestampCanarias` => `"14:02:03"`<br>
 `tiempo().timestampNY` => `"9:02:03 AM"`<br>
+`tiempo().dateMadrid` => Fecha actual en "Europe/Madrid"<br>
+`tiempo().dateCanarias` => Fecha actual en "Atlantic/Canary"<br>
 `tiempo().datestampMadrid` => `"04/05/2006"`<br>
 `tiempo().datestampCanarias` => `"04/05/2006"`<br>
 `tiempo().datestampNY` => `"5/4/2006"`<br>
-
+`tiempo().defaultformat` => Tiempo y fecha  actual en el formato `DD/MM/YYYY hh:mm:ss`<br>
+`tiempo().defaultfortmattimestamp` => `"04/05/2006 15:02:03"`<br>
+`tiempo().timedotformat` => `"15.02.03"`<br>
+`tiempo().dateminusformat`=> ❌`"04-05-06"`<br>
+`tiempo().conbinedformat` => ❌`"NaN:02:03 PM - 04/05/2006"`<br>
+`tiempo().diff1` => `"21 horas 15 minutos "`<br>
+`tiempo().diff2` => `"21 horas 15 minutos "`<br>
+`tiempo().diff3` => `"1 minutos 16 segundos "`<br>
+`tiempo().diff4` => `"21 horas 15 minutos "`<br>
+`tiempo().toMS1` => ❌`undefined`<br>
+`tiempo().toMS2` => ❌`undefined`<br>
+`tiempo().toMS3` => `612000000`<br>
+`tiempo().toMS4` => `252`<br>
 
 ## Uso de las funciones
 
@@ -164,7 +189,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
     * Semanas: `weeks`, `week`, `w`
     * Días: `days`, `day`, `d`
     * Horas: `hours`, `hour`, `hrs`, `hr`, `h`
-    * Minutos: `minutes`, `minute`, `mins`, `min`, `h`
+    * Minutos: `minutes`, `minute`, `mins`, `min`, `m`
     * Segundos: `seconds`, `second`, `secs`, `sec`, `s`
     * Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms` o no añadas la unidad de tiempo
 
