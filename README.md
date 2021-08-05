@@ -28,7 +28,7 @@ Usamos el siguiente *`timestamp`* como ejemplo para que puedas ver el formato de
 **- Fecha y hora (GMT):** `4 de mayo de 2006 13:02:03`
 
 ```js
-const { dataTime, dataDate, formatDate, diffDate } = require("util-tiempo")
+const { dataTime, dataDate, formatDate, diffDate, formatMs } = require("util-tiempo")
 
 const tiempo = () => {
     return {
@@ -45,12 +45,12 @@ const tiempo = () => {
         defaultformat: formatDate(),
         defaultfortmattimestamp: formatDate(1146747723),
         timedotformat: formatDate(1146747723, {format: "{hh}.{mm}.{ss}"}),
-        dateminusformat: formatDate(1146747723, {format: "{D}-{M}-{YY}"}), // REVISAR CÓDIGO, NO SALE COMO SE ESPERABA
-        conbinedformat: formatDate(1146747723, {local: "en-US", timeZone: "America/New_York", hour12: true, format: "{h}:{mm}:{ss} {apm} - {DD}/{MM}/{YYYY}"}), //REVISAR CÓDIGO, NO SALE COMO SE ESPERABA
-        diff1: diffDate(1146747723, 1146747723 + 76500000), // 76500000 milisegundos son 21 hora y 15 minutos más
+        dateminusformat: formatDate(1146747723, {format: "{D}-{M}-{YY}"}), 
+        conbinedformat: formatDate(1146747723, {timeZone: "America/New_York", hour12: true, format: "{h}:{mm}:{ss} {apm} - {DD}/{MM}/{YYYY}"}), 
+        diff1: diffDate(1146747723, 1146747723 + 76500000), // 76500000 milisegundos son 21 horas y 15 minutos más
         diff2: diffDate(76500000),
         diff3: diffDate(76500), // El código detecta en esta función que los datos que le hemos pasado son milisegundos
-        diff4: diffDate(76500 * 1000), // Multiplicando  por 1000, podemos pasar los datos de segundos a milisegundos
+        diff4: diffDate(76500 * 1000), // Multiplicando por 1000, podemos pasar los datos de segundos a milisegundos
         toMs1: formatMs("1s"),
         toMs2: formatMs("1m"),
         toMS3: formatMs("1w") + formatMs("2h"),
@@ -70,17 +70,17 @@ const tiempo = () => {
 `tiempo().datestampMadrid` => `"04/05/2006"`<br>
 `tiempo().datestampCanarias` => `"04/05/2006"`<br>
 `tiempo().datestampNY` => `"5/4/2006"`<br>
-`tiempo().defaultformat` => Tiempo y fecha  actual en el formato `DD/MM/YYYY hh:mm:ss`<br>
+`tiempo().defaultformat` => Tiempo y fecha  actual en el formato *`DD/MM/YYYY hh:mm:ss`*<br>
 `tiempo().defaultfortmattimestamp` => `"04/05/2006 15:02:03"`<br>
 `tiempo().timedotformat` => `"15.02.03"`<br>
-`tiempo().dateminusformat`=> ❌`"04-05-06"`<br>
-`tiempo().conbinedformat` => ❌`"NaN:02:03 PM - 04/05/2006"`<br>
+`tiempo().dateminusformat`=> `"4-5-06"`<br>
+`tiempo().conbinedformat` => `"9:02:03 AM - 04/05/2006"`<br>
 `tiempo().diff1` => `"21 horas 15 minutos "`<br>
 `tiempo().diff2` => `"21 horas 15 minutos "`<br>
 `tiempo().diff3` => `"1 minutos 16 segundos "`<br>
 `tiempo().diff4` => `"21 horas 15 minutos "`<br>
-`tiempo().toMS1` => ❌`undefined`<br>
-`tiempo().toMS2` => ❌`undefined`<br>
+`tiempo().toMS1` => `1000`<br>
+`tiempo().toMS2` => `60000`<br>
 `tiempo().toMS3` => `612000000`<br>
 `tiempo().toMS4` => `252`<br>
 
@@ -132,7 +132,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
   * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
 
 <h3 id="formatDate">
-<code>formatDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
+<code>formatDate(&lt;tiempo&gt;, {timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;, format: &lt;formato&gt;})</code>
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br> 
@@ -145,12 +145,23 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
   * Si no se define o es `null` estará tomando el tiempo actual, es decir, `dataTime()` es equivalente a `dataTime(null)`.
   * El tiempo lo tienes que definir como *`timestamp`*, el código reconoce si está en *`segundos`* o *`milisegundos`*. Puedes obtener el *`timestamp`* de una fecha en concreta en esta [página](https://www.epochconverter.com/ 'Epoch & Unix Timestamp Conversion Tools').
   * Si defines un argumento que no sea el tiempo (*`local`*, *`timeZone`*), deberás de definir el argumento tiempo (*`null`* como el tiempo actual)
-* **local: &lt;formato&gt;** *[OPCIONAL]*
-  * Puedes revisar la lista de [**formatos locales**](#local).
-  * Si no se define este argumento, tomará el formato *`DD/MM/YYYY`*
 * **timeZone: &lt;zonahoraria&gt;** *[OPCIONAL]*
   * Puedes revisar la lista de [**zonas horarias**](#timezone).
   * Si no se define este argumento, tomará el tiempo de *`Europe/Madrid`*
+* **hour12: &lt;true/false&gt;** *[OPCIONAL]*
+  * Si quieres que el formato de la hora sea en *`12h`*, define este argumento como *`true`*.
+  * Si quieres que el formato de la hora sea en *`24h`*, no definas el argumento o defínelo como *`false`*.
+* **format: &lt;formato&gt;** *[OPCIONAL]*
+  * Si no defines este argumento, por defecto te mostrará el tiempo en el formato *`DD/MM/YYYY hh:mm:ss`*.
+  * Puedes definir el formato de la fecha que prefieras con las siguientes variables:
+    * Hora: *`{hh}`* en dos dígitos, *`{h}`* en un dígito [`01:02:03` => *`{hh}`* = `'01'`, *`{h}`* = `'1'`]
+    * Minutos: *`{mm}`* en dos dígitos, *`{m}`* en un dígito [`01:02:03` => *`{mm}`* = `'02'`, *`{m}`* = `'2'`]
+    * Segundos: *`{ss}`* en dos dígitos, *`{s}`* en un dígito [`01:02:03` => *`{ss}`* = `'03'`, *`{s}`* = `'3'`]
+    * Día: *`{DD}`* en dos dígitos, *`{D}`* en un dígito [`04/05/2006` => *`{DD}`* = `'04'`, *`{D}`* = `'4'`]
+    * Mes: *`{MM}`* en dos dígitos, *`{M}`* en un dígito [`04/05/2006` => *`{MM}`* = `'05'`, *`{M}`* = `'5'`]
+    * Año: *`{YYYY}`* en cuatro dígitos, *`{YY}`* en dos dígitos [`04/05/2006` => *`{YYYY}`* = `'2006'`, *`{YY}`* = `'06'`]
+    * AM/PM: *`{apm}`* *Solo se mostrará si esta definido `hour12: true`
+  * **EJEMPLO**: `"{DD}/{MM}/{YYYY} {hh}:{mm}:{ss}"`. Este ejemplo es como se escribiría el formato que el código tiene por defecto.
 
 <h3 id="diffDate">
 <code>diffDate(&lt;tiempo1&gt;, &lt;tiempo2&gt;)</code>
