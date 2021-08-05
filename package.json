@@ -1,8 +1,11 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "main": "dist/index.js",
+  "bin": {
+    "util-tiempo": "./help.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
@@ -13,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.3.3",
+    "chalk": "^4.1.2",
     "ts-node": "^10.1.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"

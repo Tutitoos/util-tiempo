@@ -165,9 +165,3 @@ export const formatMs = (time: any) => {
     }
     return catchErrors(num)
 }
-
-
-
-/*if (process.argv[2] === '-help') {
-    console.log("Util-Tiempo - El mejor NPM\n\nLista de funciones:\n-formatDate\n-dataDate\n-dataTime\n-diffDate")
-}*/
