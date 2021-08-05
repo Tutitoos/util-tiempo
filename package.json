@@ -1,10 +1,10 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "main": "dist/index.js",
   "bin": {
-    "util-tiempo": "./help.js"
+    "util-tiempo": "dist/help.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
