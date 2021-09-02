@@ -77,7 +77,7 @@ const tiempo = () => {
 `tiempo().conbinedformat` => `"9:02:03 AM - 04/05/2006"`<br>
 `tiempo().diff1` => `"21 horas 15 minutos "`<br>
 `tiempo().diff2` => `"21 horas 15 minutos "`<br>
-`tiempo().diff3` => `"1 minutos 16 segundos "`<br>
+`tiempo().diff3` => `"1 minuto 16 segundos "`<br>
 `tiempo().diff4` => `"21 horas 15 minutos "`<br>
 `tiempo().toMS1` => `1000`<br>
 `tiempo().toMS2` => `60000`<br>
