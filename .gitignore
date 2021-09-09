@@ -1,6 +1,4 @@
-dist
 .idea
 node_modules/
 tsconfig.json
-package-lock.json
 package-lock.json
