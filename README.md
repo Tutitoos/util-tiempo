@@ -11,6 +11,9 @@
 </a><br><a href="https://www.npmjs.com/package/util-tiempo"><a href="https://nodei.co/npm/util-tiempo/"><img src="https://nodei.co/npm/util-tiempo.png?downloads=true&downloadRank=true&stars=true"></a></a><br><br>
 </div>
 
+> **⚠ ADVERTENCIA:**<br> 
+> Los tiempos tienen que estar en ***`milisegundos`***. En el caso de que estén en *`segundos`*, basta con multiplicarlos por mil (*`*1000`*).
+
 ## Funciones disponibles
 * [`getTime()`](#getTime)
 * [`getDate()`](#getDate)
@@ -31,7 +34,6 @@ Usamos el siguiente *`timestamp`* como ejemplo para que puedas ver el formato de
 const { getTime, getDate, getFormat, getCompareDate, getFormatMs } = require('util-tiempo')
 // alternativa
 import { getTime, getDate, getFormat, getCompareDate, getFormatMs } from 'util-tiempo'
-
 
 // getTime() por defecto  timeZone 'Europe/Madrid'
 getTime() // resultado = Hora actual en 'Europe/Madrid'
@@ -160,9 +162,6 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 
 > **ℹ DESCRIPCIÓN:**<br> 
 > Este comando te devuelve la diferencia entre dos fechas o cuanto tiempo son los milisegundos que le pasas.
-
-> **⚠ ADVERTENCIA:**<br> 
-> Los tiempos tienen que estar en ***`milisegundos`***. En el caso de que estén en *`segundos`*, basta con multiplicarlos por mil (*`*1000`*).
 
 El segundo tiempo es opcional.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
