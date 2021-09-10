@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getFormatMs = exports.getCompareDate = exports.getFormat = exports.getTime = exports.getDate = void 0;
 const s = 1000;
 const m = s * 60;
 const h = m * 60;
@@ -140,4 +141,15 @@ class main {
         return this.handleError(content);
     }
 }
-exports.default = new main();
+;
+const client = new main();
+const getDate = (time, args) => client.getDate(time, args);
+exports.getDate = getDate;
+const getTime = (time, args) => client.getTime(time, args);
+exports.getTime = getTime;
+const getFormat = (time, args) => client.getFormat(time, args);
+exports.getFormat = getFormat;
+const getCompareDate = (time1, time2) => client.getCompareDate(time1, time2);
+exports.getCompareDate = getCompareDate;
+const getFormatMs = (time) => client.getFormatMs(time);
+exports.getFormatMs = getFormatMs;

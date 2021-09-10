@@ -7,7 +7,6 @@ const d = h * 24;
 const w = d * 7;
 const mh = d * 30;
 const y = mh * 12;
-
 class main {
     time: any;
     local: any;
@@ -21,26 +20,22 @@ class main {
         this.hour12 = (hour12) => hour12 || false;
         this.format = (format) => format || null;
     }
-
     handleError(args) {
         if (isNaN(args)) {
             if (['Invalid Date'].includes(args) || args.endsWith('1970') || !args) return console.log('\x1b[31m', `Argumento invalido! => ${args}`);
         }
         return args;
     }
-
     getDate(time?, args?) {
         if (time && isNaN(time)) return console.log('\x1b[31m', 'La fecha no es valida!');
         if (typeof time === "string") time = parseFloat(time);
         return this.handleError(new Date(this.time(time)).toLocaleDateString(this.local(args?.local), { timeZone: this.timeZone(args?.timeZone) }));
     }
-
     getTime(time?, args?) {
         if (time && isNaN(time)) return console.log('\x1b[31m', 'El tiempo no es valido!');
         if (typeof time === "string") time = parseFloat(time);
         return this.handleError(new Date(this.time(time)).toLocaleTimeString(this.local(args?.local), { timeZone: this.timeZone(args?.timeZone), hour12: this.hour12(args?.hour12) }));
     }
-
     getFormat(time?, args?) {
         if (time && isNaN(time)) return console.log('\x1b[31m', 'El tiempo no es valido!');
         if (typeof time === "string") time = parseFloat(time);
@@ -84,7 +79,6 @@ class main {
             return this.handleError(content);
         } else return `${this.getDate(time, args)} ${this.getTime(time, args)}`;
     }
-
     getCompareDate(time1, time2 = 0) {
         if (time1 !== 0 && !time1) return console.log('\x1b[31m', "Falta el primer argumento tiempo!");
         if (time1 !== 0 && isNaN(time1)) return console.log('\x1b[31m', 'El primer tiempo no es valido!');
@@ -106,7 +100,6 @@ class main {
         if (!content) content = "0";
         return this.handleError(content);
     }
-
     getFormatMs(time) {
         if (time !== 0 && !time) return console.log('\x1b[31m', 'Falta el argumento de tiempo!');
         const reg = new RegExp(/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(time);
@@ -123,6 +116,10 @@ class main {
         if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content;
         return this.handleError(content);
     }
-}
-
-export default new main();
+};
+const client = new main();
+export const getDate = (time?, args?) => client.getDate(time, args);
+export const getTime = (time?, args?) => client.getTime(time, args);
+export const getFormat = (time?, args?) => client.getFormat(time, args);
+export const getCompareDate = (time1?, time2?) => client.getCompareDate(time1, time2);
+export const getFormatMs = (time) => client.getFormatMs(time);
