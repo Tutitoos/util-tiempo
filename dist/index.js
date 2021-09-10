@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFormatMs = exports.getCompareDate = exports.getFormat = exports.getTime = exports.getDate = void 0;
+exports.get = exports.getFormatMs = exports.getCompareDate = exports.getFormat = exports.getTime = exports.getDate = void 0;
 const s = 1000;
 const m = s * 60;
 const h = m * 60;
@@ -140,6 +140,32 @@ class main {
             content;
         return this.handleError(content);
     }
+    get(args) {
+        if (!args || typeof args !== 'string')
+            return console.log('\x1b[31m', 'Falta el argumento!');
+        const reg = new RegExp(/^ *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(args);
+        if (!reg)
+            return console.log('\x1b[31m', 'El argumento no es valido!');
+        let content = reg[0];
+        let type = (reg[1]).toLowerCase();
+        if (['years', 'year', 'yrs', 'yr', 'y'].includes(type))
+            content = this.time().getFullYear();
+        if (['months', 'month', 'mth', 'mh'].includes(type))
+            content = this.time().getMonth();
+        if (['weeks', 'week', 'w'].includes(type))
+            content = this.time().getDay();
+        if (['days', 'day', 'd'].includes(type))
+            content = this.time().getDate();
+        if (['hours', 'hour', 'hrs', 'hr', 'h'].includes(type))
+            content = this.time().getHours();
+        if (['minutes', 'minute', 'mins', 'min', 'm'].includes(type))
+            content = this.time().getMinutes();
+        if (['seconds', 'second', 'secs', 'sec', 's'].includes(type))
+            content = this.time().getSeconds();
+        if (['milliseconds', 'millisecond', 'msecs', 'msec', 'ms'].includes(type))
+            content = this.time().getMilliseconds();
+        return this.handleError(content);
+    }
 }
 ;
 const client = new main();
@@ -153,3 +179,5 @@ const getCompareDate = (time1, time2) => client.getCompareDate(time1, time2);
 exports.getCompareDate = getCompareDate;
 const getFormatMs = (time) => client.getFormatMs(time);
 exports.getFormatMs = getFormatMs;
+const get = (args) => client.get(args);
+exports.get = get;
