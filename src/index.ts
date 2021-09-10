@@ -116,6 +116,22 @@ class main {
         if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content;
         return this.handleError(content);
     }
+    get(args) {
+        if (!args || typeof args !== 'string') return console.log('\x1b[31m', 'Falta el argumento!');
+        const reg = new RegExp(/^ *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(args);
+        if (!reg) return console.log('\x1b[31m', 'El argumento no es valido!');
+        let content = reg[0];
+        let type = (reg[1]).toLowerCase();
+        if (['years','year','yrs','yr','y'].includes(type)) content = this.time().getFullYear();
+        if (['months','month','mth','mh'].includes(type)) content = this.time().getMonth();
+        if (['weeks','week','w'].includes(type)) content = this.time().getDay();
+        if (['days','day','d'].includes(type)) content = this.time().getDate();
+        if (['hours','hour','hrs','hr','h'].includes(type)) content = this.time().getHours();
+        if (['minutes','minute','mins','min','m'].includes(type)) content = this.time().getMinutes();
+        if (['seconds','second','secs','sec','s'].includes(type)) content = this.time().getSeconds();
+        if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content = this.time().getMilliseconds();
+        return this.handleError(content);
+    }
 };
 const client = new main();
 export const getDate = (time?, args?) => client.getDate(time, args);
@@ -123,3 +139,4 @@ export const getTime = (time?, args?) => client.getTime(time, args);
 export const getFormat = (time?, args?) => client.getFormat(time, args);
 export const getCompareDate = (time1?, time2?) => client.getCompareDate(time1, time2);
 export const getFormatMs = (time) => client.getFormatMs(time);
+export const get = (args) => client.get(args);

@@ -1,10 +1,10 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "main": "dist/index.js",
   "scripts": {
-    "test": "ts-node-dev --respawn --transpile-only --poll ./main.ts",
+    "test": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
     "build": "tsc",
     "dev": "node dist/index.js"
   },

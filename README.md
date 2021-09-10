@@ -20,6 +20,7 @@
 * [`getFormat()`](#getFormat)
 * [`getCompareDate()`](#getCompareDate)
 * [`getFormatMs()`](#getFormatMs)
+* [`get()`](#get)
 
 <h2 id="ejemplo">Ejemplo</h2>
 
@@ -74,7 +75,24 @@ getCompareDate(76500000) // resultado = '21 horas 15 minutos'
 getCompareDate(1146747723, 1146747723 + 76500000) // resultado = '21 horas 15 minutos'
 
 // getFormatMs() timestamp 1ms / 1s / 1m / 1h / 1d / 1w / 1mh / 1y
+getFormatMs("1ms") // resultado = '1'
 getFormatMs("1s") // resultado = '1000'
+getFormatMs("1m") // resultado = '60000'
+getFormatMs("1h") // resultado = '3600000'
+getFormatMs("1d") // resultado = '86400000'
+getFormatMs("1w") // resultado = '604800016'
+getFormatMs("1mh") // resultado = '2629800000'
+getFormatMs("1y") // resultado = '31557600000'
+
+// get() argumento ms / s / m / h / d / w / mh / y - 10/8/2021 15:17:10.242 GMT+02:00 DST
+get('ms') // resultado = '240'
+get('s') // resultado = '10'
+get('m') // resultado = '17'
+get('h') // resultado = '15'
+get('d') // resultado = '10'
+get('w') // resultado = '5'
+get('mh') // resultado = '8'
+get('y') // resultado = '2021'
 ```
 
 ## Uso de las funciones
@@ -193,6 +211,27 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
     * Minutos: `minutes`, `minute`, `mins`, `min`, `m`
     * Segundos: `seconds`, `second`, `secs`, `sec`, `s`
     * Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms` o no añadas la unidad de tiempo
+
+<h3 id="get">
+<code>get(&lt;argumento&gt;)</code>
+</h3>
+
+> **ℹ DESCRIPCIÓN:**<br> 
+> Este comando te devuelve la unidad de tiempo que le pasas como argumento.
+
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+***No escribas en los argumentos los símbolos `< >`.***
+* **&lt;argumento&gt;**
+  * Añade la unidad de tiempo `{tiempo}`. Por ejemplo, para que te devuelva el año actual `2021` debes de pasar como argumento `y` .
+  * **Unidades de tiempo:**
+    * Años: `years`, `year`, `yrs`, `yr`, `y`
+    * Meses: `months`, `month`, `mth`, `mh`
+    * Semanas: `weeks`, `week`, `w`
+    * Días: `days`, `day`, `d`
+    * Horas: `hours`, `hour`, `hrs`, `hr`, `h`
+    * Minutos: `minutes`, `minute`, `mins`, `min`, `m`
+    * Segundos: `seconds`, `second`, `secs`, `sec`, `s`
+    * Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms`
 
 ## Variables del tiempo
 
