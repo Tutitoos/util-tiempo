@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const npmUrl = 'https://www.npmjs.com/package/util-tiempo';
-
 const s = 1000;
 const m = s * 60;
 const h = m * 60;

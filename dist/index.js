@@ -2,6 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.get = exports.getFormatMs = exports.getCompareDate = exports.getFormat = exports.getTime = exports.getDate = void 0;
+const npmUrl = 'https://www.npmjs.com/package/util-tiempo';
 const s = 1000;
 const m = s * 60;
 const h = m * 60;
@@ -26,21 +27,21 @@ class main {
     }
     getDate(time, args) {
         if (time && isNaN(time))
-            return console.log('\x1b[31m', 'La fecha no es valida!');
+            return console.log('\x1b[31m', `La fecha no es valida! - Ver mas: ${npmUrl}#getDate`);
         if (typeof time === "string")
             time = parseFloat(time);
         return this.handleError(new Date(this.time(time)).toLocaleDateString(this.local(args === null || args === void 0 ? void 0 : args.local), { timeZone: this.timeZone(args === null || args === void 0 ? void 0 : args.timeZone) }));
     }
     getTime(time, args) {
         if (time && isNaN(time))
-            return console.log('\x1b[31m', 'El tiempo no es valido!');
+            return console.log('\x1b[31m', `El tiempo no es valido! - Ver mas: ${npmUrl}#getTime`);
         if (typeof time === "string")
             time = parseFloat(time);
         return this.handleError(new Date(this.time(time)).toLocaleTimeString(this.local(args === null || args === void 0 ? void 0 : args.local), { timeZone: this.timeZone(args === null || args === void 0 ? void 0 : args.timeZone), hour12: this.hour12(args === null || args === void 0 ? void 0 : args.hour12) }));
     }
     getFormat(time, args) {
         if (time && isNaN(time))
-            return console.log('\x1b[31m', 'El tiempo no es valido!');
+            return console.log('\x1b[31m', `El tiempo no es valido! - Ver mas: ${npmUrl}#getFormat`);
         if (typeof time === "string")
             time = parseFloat(time);
         // time = time * 1000;
@@ -89,11 +90,11 @@ class main {
     }
     getCompareDate(time1, time2 = 0) {
         if (time1 !== 0 && !time1)
-            return console.log('\x1b[31m', "Falta el primer argumento tiempo!");
+            return console.log('\x1b[31m', `Falta el primer argumento tiempo! - Ver mas: ${npmUrl}#getCompareDate`);
         if (time1 !== 0 && isNaN(time1))
-            return console.log('\x1b[31m', 'El primer tiempo no es valido!');
+            return console.log('\x1b[31m', `El primer tiempo no es valido! - Ver mas: ${npmUrl}#getCompareDate`);
         if (time2 !== 0 && isNaN(time2))
-            return console.log('\x1b[31m', 'El segundo tiempo no es valido!');
+            return console.log('\x1b[31m', `El segundo tiempo no es valido! - Ver mas: ${npmUrl}#getCompareDate`);
         if (typeof time1 === "string")
             time1 = parseFloat(time1);
         if (typeof time2 === "string")
@@ -116,11 +117,13 @@ class main {
     }
     getFormatMs(time) {
         if (time !== 0 && !time)
-            return console.log('\x1b[31m', 'Falta el argumento de tiempo!');
+            return console.log('\x1b[31m', `Falta el argumento de tiempo! - Ver mas: ${npmUrl}#getFormatMs`);
         const reg = new RegExp(/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(time);
         if (!reg)
-            return console.log('\x1b[31m', 'El formato no es valido!');
+            return console.log('\x1b[31m', `El formato no es valido! - Ver mas: ${npmUrl}#getFormatMs`);
         let content = parseFloat(reg[1]);
+        if (!reg[2])
+            return console.log('\x1b[31m', `Falta la unidad de tiempo! - Ver mas: ${npmUrl}#getFormatMs`);
         let type = (reg[2]).toLowerCase();
         if (['years', 'year', 'yrs', 'yr', 'y'].includes(type))
             content *= y;
@@ -142,10 +145,10 @@ class main {
     }
     get(args) {
         if (!args || typeof args !== 'string')
-            return console.log('\x1b[31m', 'Falta el argumento!');
+            return console.log('\x1b[31m', `Falta el argumento! - Ver mas: ${npmUrl}#get`);
         const reg = new RegExp(/^ *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(args);
         if (!reg)
-            return console.log('\x1b[31m', 'El argumento no es valido!');
+            return console.log('\x1b[31m', `El argumento no es valido! - Ver mas: ${npmUrl}#get`);
         let content = reg[0];
         let type = (reg[1]).toLowerCase();
         if (['years', 'year', 'yrs', 'yr', 'y'].includes(type))
