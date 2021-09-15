@@ -1,167 +1,145 @@
 #!/usr/bin/env node
 
-function catchErrors(info) {
-    if (isNaN(info)) {
-        if (['Invalid Date'].includes(info) || info.endsWith('1970') || !info) return console.log('\x1b[31m',`Argumento invalido! => ${info}`);
+const npmUrl = 'https://www.npmjs.com/package/util-tiempo';
+
+const s = 1000;
+const m = s * 60;
+const h = m * 60;
+const d = h * 24;
+const w = d * 7;
+const mh = d * 30;
+const y = mh * 12;
+class main {
+    time: any;
+    local: any;
+    timeZone: any;
+    hour12: any;
+    format: any;
+    constructor() {
+        this.time = (time) => time || new Date();
+        this.local = (local) => local || 'fr-FR';
+        this.timeZone = (timeZone) => timeZone || 'Europe/Madrid';
+        this.hour12 = (hour12) => hour12 || false;
+        this.format = (format) => format || null;
     }
-    return info;
-}
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var w = d * 7;
-var mh = d * 30;
-var y = mh * 12;
-
-const opciones = {
-    time: (time?: any) => time || new Date(),
-    local: (local?: string) => local || 'fr-FR',
-    timeZone: (timeZone?: string) => timeZone || 'Europe/Madrid',
-    hour12: (hour12?: boolean) => hour12 || false,
-    format: (format?: string) => format || undefined // Default "{hh}:{mm}:{ss} {DD}/{MM}/{YYYY}"
-}
-export const dataDate = (time?: any, args?: any) => {
-    if (time && isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
-    if (typeof time === "string") time = parseFloat(time);
-    if (time && time.toString().length < 12) time = time * 1000;
-    return catchErrors(new Date(opciones.time(time)).toLocaleDateString(opciones.local(args?.local), {timeZone: opciones.timeZone(args?.timeZone)}))
-}
-export const dataTime = (time?: any, args?: any) => {
-    if (time && isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
-    if (typeof time === "string") time = parseFloat(time);
-    if (time && time.toString().length < 12) time = time * 1000;
-    return catchErrors(new Date(opciones.time(time)).toLocaleTimeString(opciones.local(args?.local), {timeZone: opciones.timeZone(args?.timeZone), hour12: opciones.hour12(args?.hour12)}))
-}
-export const formatDate = (time?: any, args?: any) => {
-    if (time && isNaN(time)) return console.log('\x1b[31m',"El tiempo es invalido!");
-    if (typeof time === "string") time = parseFloat(time);
-    if (time && time.toString().length < 12) time = time * 1000;
-    if (opciones.format(args?.format)) {
-        let content = args?.format;
-        let apm = "";
-        for (const key of [
-            {hourLong: {format: "{hh}",hour: "2-digit"}},
-            {hourShort: {format: "{h}",hour: "2-digit"}}
-        ]) {
-            Object.values(key).forEach((datos) => {
-                let hour: any = new Date(opciones.time(time)).toLocaleString(args?.local || 'pt-PT', Object.assign({timeZone: opciones.timeZone(args?.timeZone)}, datos));
-                if (args?.hour12) {
-                    hour < 12 ? apm = "AM" : apm = "PM"
-                    hour % 12 === 0 ? hour = (hour % 12) + 12 : hour = hour % 12
-                    content = content.replace("{apm}", apm)
-                } else {
-                    content = content.replace("{apm}", "")
-                }
-                // @ts-ignore
-                content = content.replace(key[Object.keys(key)].format, hour.toString().padStart(key[Object.keys(key)].format.length - 2, "0"))
-            })
-
+    handleError(args) {
+        if (isNaN(args)) {
+            if (['Invalid Date'].includes(args) || args.endsWith('1970') || !args) return console.log('\x1b[31m', `Argumento invalido! => ${args}`);
         }
-        for (const key of [
-            {minuteLong: {format: "{mm}",minute: "2-digit"}},
-            {minuteShort: {format: "{m}",minute: "2-digit"}},
-            {secondLong: {format: "{ss}",second: "2-digit"}},
-            {secondShort: {format: "{s}",second: "2-digit"}},
-            {dayLong: {format: "{DD}",day: "2-digit"}},
-            {dayShort: {format: "{D}",day: "2-digit"}},
-            {monthLong: {format: "{MM}",month: "2-digit"}},
-            {monthShort: {format: "{M}",month: "2-digit"}},
-            {yearLong: {format: "{YYYY}",year: "numeric"}},
-            {yearShort: {format: "{YY}",year: "2-digit"}}
-        ]) {
-            Object.values(key).forEach((datos) => {
-                // @ts-ignore
-                content = content.replace(key[Object.keys(key)].format, new Date(opciones.time(time)).toLocaleString(args?.local || 'pt-PT', Object.assign({
-                    timeZone: opciones.timeZone(args?.timeZone),
+        return args;
+    }
+    getDate(time?, args?) {
+        if (time && isNaN(time)) return console.log('\x1b[31m', `La fecha no es valida! - Ver mas: ${npmUrl}#getDate`);
+        if (typeof time === "string") time = parseFloat(time);
+        return this.handleError(new Date(this.time(time)).toLocaleDateString(this.local(args?.local), { timeZone: this.timeZone(args?.timeZone) }));
+    }
+    getTime(time?, args?) {
+        if (time && isNaN(time)) return console.log('\x1b[31m', `El tiempo no es valido! - Ver mas: ${npmUrl}#getTime`);
+        if (typeof time === "string") time = parseFloat(time);
+        return this.handleError(new Date(this.time(time)).toLocaleTimeString(this.local(args?.local), { timeZone: this.timeZone(args?.timeZone), hour12: this.hour12(args?.hour12) }));
+    }
+    getFormat(time?, args?) {
+        if (time && isNaN(time)) return console.log('\x1b[31m', `El tiempo no es valido! - Ver mas: ${npmUrl}#getFormat`);
+        if (typeof time === "string") time = parseFloat(time);
+       // time = time * 1000;
+        if (this.format(args?.format)) {
+            let content = args?.format;
+            let apm = "";
+            for (const key of [
+                { hourLong: { format: "{hh}", hour: "2-digit" } },
+                { hourShort: { format: "{h}", hour: "2-digit" } },
+            ]) {
+                Object.values(key).forEach((datos: any) => {
+                    console.log(new Date(this.time(time)))
+                    let hour: number = parseInt(new Date(this.time(time)).toLocaleString(args?.local || 'pt-PT', Object.assign({ timeZone: this.timeZone(args?.timeZone) }, datos)));
+                    if (args?.hour12) {
+                        hour < 12 ? apm = 'AM' : apm = 'PM';
+                        hour % 12 === 0 ? hour = (hour % 12) + 12 : hour = hour % 12;
+                        content = content.replace("{apm}", apm);
+                    } else content = content.replace("{apm}", "");
                     // @ts-ignore
-                }, datos)).padStart(key[Object.keys(key)].format.length - 2, "0"))
-            })
-
+                    content = content.replace(key[Object.keys(key)].format, String(hour).padStart(key[Object.keys(key)].format.length - 2, "0"));
+                });
+            }
+            for (const key of [
+                { minuteLong: { format: "{mm}", minute: "2-digit" } },
+                { minuteShort: { format: "{m}", minute: "2-digit" } },
+                { secondLong: { format: "{ss}", second: "2-digit" } },
+                { secondShort: { format: "{s}", second: "2-digit" } },
+                { dayLong: { format: "{DD}", day: "2-digit" } },
+                { dayShort: { format: "{D}", day: "numeric" } },
+                { monthLong: { format: "{MM}", month: "2-digit" } },
+                { monthShort: { format: "{M}", month: "numeric" } },
+                { yearLong: { format: "{YYYY}", year: "numeric" } },
+                { yearShort: { format: "{YY}", year: "numeric" } },
+            ]) {
+                Object.values(key).forEach((datos: any) => {
+                    // @ts-ignore
+                    content = content.replace(key[Object.keys(key)].format, new Date(this.time(time)).toLocaleString(args?.local || 'pt-PT', Object.assign({ timeZone: this.timeZone(args?.timeZone) }, datos)).padStart(key[Object.keys(key)].format.length - 2, "0"));
+                });
+            }
+            return this.handleError(content);
+        } else return `${this.getDate(time, args)} ${this.getTime(time, args)}`;
+    }
+    getCompareDate(time1, time2 = 0) {
+        if (time1 !== 0 && !time1) return console.log('\x1b[31m', `Falta el primer argumento tiempo! - Ver mas: ${npmUrl}#getCompareDate`);
+        if (time1 !== 0 && isNaN(time1)) return console.log('\x1b[31m', `El primer tiempo no es valido! - Ver mas: ${npmUrl}#getCompareDate`);
+        if (time2 !== 0 && isNaN(time2)) return console.log('\x1b[31m', `El segundo tiempo no es valido! - Ver mas: ${npmUrl}#getCompareDate`);
+        if (typeof time1 === "string") time1 = parseFloat(time1);
+        if (typeof time2 === "string") time2 = parseFloat(time2);
+        const time = Math.abs(time1 - time2);
+        let content = "";
+        for (const key of [
+            { 'años': Math.floor(time / y) },
+            { 'meses': Math.floor(time / mh) % 12 },
+            { 'días': Math.floor(time / d) % 30 },
+            { 'horas': Math.floor(time / h) % 24 },
+            { 'minutos': Math.floor(time / m) % 60 },
+            { 'segundos': Math.floor(time / s) % 60 }
+        ]) {
+            Object.values(key).map((i) => !i || (content += Object.values(key) + ` ${Object.keys(key)} `))
         }
-        return catchErrors(content)
-    } else return `${dataDate(time, args)} ${dataTime(time, args)}`
-}
-export const diffDate = (time1: any, time2: any) => {
-    if (!time2) time2 = 0;
-    if (time1 !== 0 && !time1) return console.log('\x1b[31m',"Falta el primer tiempo!");
-    if (time1 !== 0 && isNaN(time1)) return console.log('\x1b[31m',"El primer tiempo es invalido!");
-    if (time2 !== 0 && isNaN(time2)) return console.log('\x1b[31m',"El segundo tiempo es invalido!");
-    if (typeof time1 === "string") time1 = parseFloat(time1);
-    if (typeof time2 === "string") time2 = parseFloat(time2);
-    //if (time1.toString().length < 12) time1 = time1 * 1000;
-    const tiempo = Math.abs(time1 - time2);
-    let uptime = "";
-    let segundos = Math.floor(tiempo / s) % 60;
-    let minutos = Math.floor(tiempo / m) % 60;
-    let horas = Math.floor(tiempo / h) % 24;
-    let días = Math.floor(tiempo / d) % 30;
-    let meses = Math.floor(tiempo / mh) % 12;
-    let años = Math.floor(tiempo / y);
-    for (const key of [{'años': años}, {'meses': meses}, {'días': días}, {'horas': horas}, {'minutos': minutos}, {'segundos': segundos}]) {
-        Object.values(key).map((i) => !i || (uptime += Object.values(key) + ` ${Object.keys(key)} `))
+        if (!content) content = "0";
+        return this.handleError(content);
     }
-    if (!uptime) uptime = "0"
-    return catchErrors(uptime);
-}
-export const formatMs = (time: any) => {
-    if (time !== 0 && !time) return console.log('\x1b[31m',"Falta el tiempo!");
-    const reg = new RegExp(/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(time);
-    if (!reg) return console.log('\x1b[31m',"Formato invalido!");
-    let num = parseFloat(reg[1]);
-    let type = (reg[2] || 'ms').toLowerCase();
-    switch (type) {
-        case 'years':
-        case 'year':
-        case 'yrs':
-        case 'yr':
-        case 'y':
-            num *= y;
-            break;
-        case 'months':
-        case 'month':
-        case 'mth':
-        case 'mh':
-            num *= mh;
-            break;
-        case 'weeks':
-        case 'week':
-        case 'w':
-            num *= w;
-            break;
-        case 'days':
-        case 'day':
-        case 'd':
-            num *= d;
-            break;
-        case 'hours':
-        case 'hour':
-        case 'hrs':
-        case 'hr':
-        case 'h':
-            num *= h;
-            break;
-        case 'minutes':
-        case 'minute':
-        case 'mins':
-        case 'min':
-        case 'm':
-            num *= m;
-            break;
-        case 'seconds':
-        case 'second':
-        case 'secs':
-        case 'sec':
-        case 's':
-            num *= s;
-            break;
-        case 'milliseconds':
-        case 'millisecond':
-        case 'msecs':
-        case 'msec':
-        case 'ms':
-            //num;
-            break;
+    getFormatMs(time) {
+        if (time !== 0 && !time) return console.log('\x1b[31m', `Falta el argumento de tiempo! - Ver mas: ${npmUrl}#getFormatMs`);
+        const reg = new RegExp(/^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(time);
+        if (!reg) return console.log('\x1b[31m', `El formato no es valido! - Ver mas: ${npmUrl}#getFormatMs`);
+        let content = parseFloat(reg[1]);
+        if (!reg[2]) return console.log('\x1b[31m', `Falta la unidad de tiempo! - Ver mas: ${npmUrl}#getFormatMs`);
+        let type = (reg[2]).toLowerCase();
+        if (['years','year','yrs','yr','y'].includes(type)) content *= y;
+        if (['months','month','mth','mh'].includes(type)) content *= mh;
+        if (['weeks','week','w'].includes(type)) content *= w;
+        if (['days','day','d'].includes(type)) content *= d;
+        if (['hours','hour','hrs','hr','h'].includes(type)) content *= h;
+        if (['minutes','minute','mins','min','m'].includes(type)) content *= m;
+        if (['seconds','second','secs','sec','s'].includes(type)) content *= s;
+        if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content;
+        return this.handleError(content);
     }
-    return catchErrors(num)
-}
+    get(args) {
+        if (!args || typeof args !== 'string') return console.log('\x1b[31m', `Falta el argumento! - Ver mas: ${npmUrl}#get`);
+        const reg = new RegExp(/^ *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|months?|mth|mh|years?|yrs?|y)?$/i).exec(args);
+        if (!reg) return console.log('\x1b[31m', `El argumento no es valido! - Ver mas: ${npmUrl}#get`);
+        let content = reg[0];
+        let type = (reg[1]).toLowerCase();
+        if (['years','year','yrs','yr','y'].includes(type)) content = this.time().getFullYear();
+        if (['months','month','mth','mh'].includes(type)) content = this.time().getMonth();
+        if (['weeks','week','w'].includes(type)) content = this.time().getDay();
+        if (['days','day','d'].includes(type)) content = this.time().getDate();
+        if (['hours','hour','hrs','hr','h'].includes(type)) content = this.time().getHours();
+        if (['minutes','minute','mins','min','m'].includes(type)) content = this.time().getMinutes();
+        if (['seconds','second','secs','sec','s'].includes(type)) content = this.time().getSeconds();
+        if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content = this.time().getMilliseconds();
+        return this.handleError(content);
+    }
+};
+const client = new main();
+export const getDate = (time?, args?) => client.getDate(time, args);
+export const getTime = (time?, args?) => client.getTime(time, args);
+export const getFormat = (time?, args?) => client.getFormat(time, args);
+export const getCompareDate = (time1?, time2?) => client.getCompareDate(time1, time2);
+export const getFormatMs = (time) => client.getFormatMs(time);
+export const get = (args) => client.get(args);
