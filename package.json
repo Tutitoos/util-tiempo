@@ -1,6 +1,6 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "main": "dist/index.js",
   "scripts": {
@@ -15,5 +15,19 @@
     "ts-node": "^10.1.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
-  }
+  },
+  "keywords": [
+    "util-tiempo",
+    "time",
+    "date",
+    "tiempo",
+    "fecha",
+    "timestamp",
+    "ms",
+    "dataTime",
+    "dataDate",
+    "diffDate",
+    "formatDate",
+    "formatMs"
+  ]
 }

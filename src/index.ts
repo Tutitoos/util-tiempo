@@ -96,7 +96,39 @@ class main {
             { 'minutos': Math.floor(time / m) % 60 },
             { 'segundos': Math.floor(time / s) % 60 }
         ]) {
-            Object.values(key).map((i) => !i || (content += Object.values(key) + ` ${Object.keys(key)} `))
+            // @ts-ignore
+            if (key[Object.keys(key)] === 1) {
+                switch (Object.keys(key)[0]) {
+                    case 'años': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` año `));
+                        break;
+                    }
+                    case 'meses': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` mes `));
+                        break;
+                    }
+                    case 'días': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` día `));
+                        break;
+                    }
+                    case 'horas': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` hora `));
+                        break;
+                    }
+                    case 'minutos': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` minuto `));
+                        break;
+                    }
+                    case 'segundos': {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` segundo `));
+                        break;
+                    }
+                    default: {
+                        Object.values(key).map((i) => !i || (content += Object.values(key) + ` ${`${Object.keys(key)}`.substring(0, Object.keys(key)[0].length - 1)} `));
+                        break;
+                    }
+                }
+            } else Object.values(key).map((i) => !i || (content += Object.values(key) + ` ${Object.keys(key)} `));
         }
         if (!content) content = "0";
         return this.handleError(content);
