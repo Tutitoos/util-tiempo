@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-export declare function validate(args: string | undefined): string | void;
-export declare function getDate(tiempo?: number | string, args?: {
-    local?: string;
-    timeZone?: string;
-}): string | void | Error;
-export declare function getTime(tiempo?: number | string, args?: {
-    local?: string;
-    timeZone?: string;
-    hour12?: boolean;
-}): string | void | Error;
-export declare function getFormat(tiempo?: number | string, args?: {
-    local?: string;
-    timeZone?: string;
-    format?: string;
-    hour12?: boolean;
-}): string | void | Error;
-export declare function getFormatMs(tiempo?: string | number): string | void | Error;
-export declare function get(args: string): string | void | Error;
+export declare function validate(args: any): any;
+export declare function getDate(tiempo?: string | number, args?: {
+    local: any;
+    timeZone: any;
+}): any;
+export declare function getTime(tiempo?: string | number, args?: {
+    local: any;
+    timeZone: any;
+    hour12: any;
+}): any;
+export declare function getFormat(tiempo?: string | number, args?: {
+    format: any;
+    local: any;
+    timeZone: any;
+    hour12: any;
+}): any;
+export declare function getFormatMs(tiempo?: string | number): any;
+export declare function get(args: string): any;
+export declare function getCompareDate(tiempo1: string | number, tiempo2?: string | number): any;
 //# sourceMappingURL=index.d.ts.map
