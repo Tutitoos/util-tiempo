@@ -109,7 +109,6 @@ export function get(args: string) {
     if (['milliseconds','millisecond','msecs','msec','ms'].includes(type)) content = new Date().getMilliseconds();
     return validate(content);
 }
-
 export function getCompareDate(tiempo1: string | number, tiempo2: string | number = 0) {
     if (typeof tiempo1 === "string") tiempo1 = parseFloat(tiempo1);
     if (typeof tiempo2 === "string") tiempo2 = parseFloat(tiempo2);
