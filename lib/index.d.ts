@@ -18,4 +18,3 @@ export declare function getFormat(tiempo?: string | number, args?: {
 export declare function getFormatMs(tiempo?: string | number): any;
 export declare function get(args: string): any;
 export declare function getCompareDate(tiempo1: string | number, tiempo2?: string | number): any;
-//# sourceMappingURL=index.d.ts.map

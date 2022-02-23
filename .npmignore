@@ -1,4 +1,5 @@
-tsconfig.json
-src
-.idea
 .whitesource
+.idea
+node_modules
+src
+tsconfig.json
