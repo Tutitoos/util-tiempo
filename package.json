@@ -1,6 +1,6 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
