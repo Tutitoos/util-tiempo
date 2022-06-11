@@ -16,7 +16,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint .",
-		"build": "tsc --noEmit",
+		"build": "tsc",
 		"dev": "node dist/main.js",
 		"dev:test": "ts-node-dev --respawn --transpile-only --poll src/main.ts"
 	},

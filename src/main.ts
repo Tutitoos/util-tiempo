@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// @ts-nocheck
+
 const s = 1000;
 const m: number = s * 60;
 const h: number = m * 60;
