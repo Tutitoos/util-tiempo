@@ -4,7 +4,7 @@
 	"description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
 	"author": "Tutitoos",
 	"license": "MIT",
-	"private": true,
+	"private": false,
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Tutitoos/util-tiempo.git"
@@ -12,6 +12,10 @@
 	"bugs": {
 		"url": "https://github.com/Tutitoos/util-tiempo/issues"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"publisher": "Tutitoos",
 	"main": "lib/index.js",
 	"types": "types/index.d.ts",
 	"scripts": {
