@@ -1,17 +1,19 @@
+/* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
   "compilerOptions": {
-      "target": "es6",
+      "target": "ES6",
       "module": "commonjs",
       "allowJs": true,
-      "outDir": "lib",
-      "declarationDir": "lib",
-      "rootDir": "src",
-      "declaration": true,
+      "sourceMap": false,
+	  "declaration": true,
+      "rootDir": "./src",
+      "outDir": "./lib",
+	  "declarationDir": "./types",
       "strict": true,
-      "moduleResolution": "node",
       "esModuleInterop": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
   },
   "include": ["src/*"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "lib", "types"]
 }

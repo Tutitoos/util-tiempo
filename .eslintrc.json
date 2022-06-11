@@ -1,7 +1,7 @@
 {
     "env": {
-        "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -18,9 +18,5 @@
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-explicit-any": "off"
-    },
-    "ignorePatterns": [
-        "dist",
-        "node_modules"
-    ]
-  }
+    }
+}

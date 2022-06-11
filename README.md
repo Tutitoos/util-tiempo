@@ -11,7 +11,7 @@
 </a><br><a href="https://www.npmjs.com/package/util-tiempo"><a href="https://nodei.co/npm/util-tiempo/"><img src="https://nodei.co/npm/util-tiempo.png?downloads=true&downloadRank=true&stars=true"></a></a><br><br>
 </div>
 
-> **⚠ ADVERTENCIA:**<br> 
+> **⚠ ADVERTENCIA:**<br>
 > Los tiempos tienen que estar en ***`milisegundos`***. En el caso de que estén en *`segundos`*, basta con multiplicarlos por mil (*`*1000`*).
 
 ## Funciones disponibles
