@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+// @ts-nocheck
 const s = 1000;
 const m: number = s * 60;
 const h: number = m * 60;
@@ -185,45 +185,49 @@ export function getCompareDate(
 			switch (Object.keys(key)[0]) {
 				case "años": {
 					Object.values(key).map(
-						(i) => !i || (content += Object.values(key) + ` año `)
+						(i: string) =>
+							!i || (content += Object.values(key) + ` año `)
 					);
 					break;
 				}
 				case "meses": {
 					Object.values(key).map(
-						(i) => !i || (content += Object.values(key) + ` mes `)
+						(i: string) =>
+							!i || (content += Object.values(key) + ` mes `)
 					);
 					break;
 				}
 				case "días": {
 					Object.values(key).map(
-						(i) => !i || (content += Object.values(key) + ` día `)
+						(i: string) =>
+							!i || (content += Object.values(key) + ` día `)
 					);
 					break;
 				}
 				case "horas": {
 					Object.values(key).map(
-						(i) => !i || (content += Object.values(key) + ` hora `)
+						(i: string) =>
+							!i || (content += Object.values(key) + ` hora `)
 					);
 					break;
 				}
 				case "minutos": {
 					Object.values(key).map(
-						(i) =>
+						(i: string) =>
 							!i || (content += Object.values(key) + ` minuto `)
 					);
 					break;
 				}
 				case "segundos": {
 					Object.values(key).map(
-						(i) =>
+						(i: string) =>
 							!i || (content += Object.values(key) + ` segundo `)
 					);
 					break;
 				}
 				default: {
 					Object.values(key).map(
-						(i: any) =>
+						(i: string) =>
 							!i ||
 							(content +=
 								Object.values(key) +
@@ -237,7 +241,7 @@ export function getCompareDate(
 			}
 		} else
 			Object.values(key).map(
-				(i) =>
+				(i: string) =>
 					!i ||
 					(content += Object.values(key) + ` ${Object.keys(key)} `)
 			);
