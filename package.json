@@ -1,6 +1,6 @@
 {
 	"name": "util-tiempo",
-	"version": "1.0.35",
+	"version": "1.0.36",
 	"description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
 	"author": "Tutitoos",
 	"license": "MIT",
@@ -10,9 +10,6 @@
 	"main": "dist/main.js",
 	"types": "dist/main.d.ts",
 	"type": "module",
-	"files": [
-		"dist"
-	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint .",
