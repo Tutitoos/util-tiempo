@@ -5,25 +5,17 @@
 	"author": "Tutitoos",
 	"license": "MIT",
 	"private": false,
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Tutitoos/util-tiempo.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Tutitoos/util-tiempo/issues"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
+	"repository": "Tutitoos/util-tiempo.git",
 	"publisher": "Tutitoos",
-	"main": "lib/index.js",
-	"types": "types/index.d.ts",
+	"main": "dist/main.js",
+	"types": "dist/main.d.ts",
+	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint .",
 		"build": "tsc",
-		"dev": "node lib/index.js",
-		"dev:test": "ts-node-dev --respawn --transpile-only --poll src/index.ts"
+		"dev": "node dist/main.js",
+		"dev:test": "ts-node-dev --respawn --transpile-only --poll src/main.ts"
 	},
 	"devDependencies": {
 		"@types/node": "17.0.42",

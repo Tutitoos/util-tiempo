@@ -7,13 +7,13 @@
       "sourceMap": false,
 	  "declaration": true,
       "rootDir": "./src",
-      "outDir": "./lib",
-	  "declarationDir": "./types",
+      "outDir": "./dist",
+	  "declarationDir": "./dist",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
   },
   "include": ["src/*"],
-  "exclude": ["node_modules", "lib", "types"]
+  "exclude": ["node_modules"]
 }
