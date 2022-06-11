@@ -29,6 +29,6 @@ jobs:
               with:
                   node-version: 18
                   registry-url: https://npm.pkg.github.com/
-            - run: yarn publish --access public
+            - run: npm publish --access public
               env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+                  NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
