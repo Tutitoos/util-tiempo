@@ -1,20 +1,20 @@
 {
 	"name": "util-tiempo",
-	"version": "1.0.36",
+	"version": "1.0.37",
 	"description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
 	"author": "Tutitoos",
 	"license": "MIT",
 	"private": false,
 	"repository": "Tutitoos/util-tiempo.git",
 	"publisher": "Tutitoos",
-	"main": "dist/main.js",
-	"types": "dist/main.d.ts",
+	"main": "lib/main.js",
+	"types": "lib/main.d.ts",
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint .",
 		"build": "tsc",
-		"dev": "node dist/main.js",
+		"dev": "node lib/main.js",
 		"dev:test": "ts-node-dev --respawn --transpile-only --poll src/main.ts"
 	},
 	"devDependencies": {
