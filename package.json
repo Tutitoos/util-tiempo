@@ -1,6 +1,6 @@
 {
 	"name": "util-tiempo",
-	"version": "1.0.39",
+	"version": "1.0.34",
 	"description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
 	"author": "Tutitoos",
 	"license": "MIT",
@@ -17,12 +17,12 @@
 		"dev:test": "ts-node-dev --respawn --transpile-only --poll src/index.ts"
 	},
 	"devDependencies": {
-		"@types/node": "17.0.42",
-		"@typescript-eslint/eslint-plugin": "5.27.1",
-		"@typescript-eslint/parser": "5.27.1",
-		"eslint": "8.17.0",
+		"@types/node": "18.0.0",
+		"@typescript-eslint/eslint-plugin": "5.30.0",
+		"@typescript-eslint/parser": "5.30.0",
+		"eslint": "8.18.0",
 		"ts-node-dev": "2.0.0",
-		"typescript": "4.7.3"
+		"typescript": "4.7.4"
 	},
 	"keywords": [
 		"util-tiempo",

@@ -165,8 +165,8 @@ export function get(value: string | number = 0) {
 	return content;
 }
 export function getCompareDate(
-	value: string | number = 0,
-	value2: string | number = 0
+	value: string | number = Date.now(),
+	value2: string | number = Date.now()
 ) {
 	if (typeof value === "string") value = Number(value);
 	if (typeof value2 === "string") value2 = Number(value);
