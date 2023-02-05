@@ -1,41 +1,51 @@
 {
-    "name": "util-tiempo",
-    "version": "1.0.41",
-    "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
-    "author": "Tutitoos",
-    "license": "MIT",
-    "private": false,
-    "repository": "Tutitoos/util-tiempo.git",
-    "publisher": "Tutitoos",
-    "main": "lib/index.js",
-    "types": "types/index.d.ts",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint .",
-        "build": "tsc",
-        "dev": "node lib/index.js",
-        "dev:test": "ts-node-dev --respawn --transpile-only --poll src/index.ts"
-    },
-    "devDependencies": {
-        "@types/node": "18.0.3",
-        "@typescript-eslint/eslint-plugin": "5.30.5",
-        "@typescript-eslint/parser": "5.30.5",
-        "eslint": "8.19.0",
-        "ts-node-dev": "2.0.0",
-        "typescript": "4.7.4"
-    },
-    "keywords": [
-        "util-tiempo",
-        "time",
-        "date",
-        "tiempo",
-        "fecha",
-        "timestamp",
-        "ms",
-        "dataTime",
-        "dataDate",
-        "diffDate",
-        "formatDate",
-        "formatMs"
-    ]
+  "name": "util-tiempo",
+  "version": "1.0.41",
+  "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
+  "author": "Tutitoos",
+  "license": "MIT",
+  "repository": "Tutitoos/util-tiempo.git",
+  "publisher": "Tutitoos",
+  "keywords": [
+    "util-tiempo",
+    "time",
+    "date",
+    "tiempo",
+    "fecha",
+    "timestamp",
+    "ms",
+    "dataTime",
+    "dataDate",
+    "diffDate",
+    "formatDate",
+    "formatMs"
+  ],
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node lib/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only --poll src/index.ts",
+    "lint:rome": "rome check src",
+    "lint:eslint": "eslint --ignore-path .gitignore . --max-warnings 0",
+    "lint": "npm run lint:rome && npm run lint:eslint",
+    "lint:install": "npm install -g rome eslint"
+  },
+  "devDependencies": {
+    "@types/joi": "^17.2.3",
+    "@types/node": "18.11.19",
+    "@typescript-eslint/eslint-plugin": "5.50.0",
+    "@typescript-eslint/parser": "5.50.0",
+    "eslint": "8.33.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-config-xo": "0.43.1",
+    "eslint-config-xo-typescript": "0.55.1",
+    "nodemon": "2.0.20",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "4.9.5"
+  },
+  "dependencies": {
+    "joi": "^17.7.0"
+  }
 }

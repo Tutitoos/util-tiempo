@@ -1,18 +1,16 @@
-/* Visit https://aka.ms/tsconfig.json to read more about this file */
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
-        "allowJs": true,
-        "checkJs": true,
-        "sourceMap": false,
-        "outDir": "./lib",
-        "rootDir": "./src",
-        "declaration": true,
-        "declarationDir": "./types",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    }
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "lib",
+    "declaration": true,
+    "declarationDir": "./lib/types",
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "include": ["src/**/*.ts"]
 }
