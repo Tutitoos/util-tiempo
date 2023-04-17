@@ -1,19 +1,22 @@
-import type { DateFormats, DateTypes, Locales, Timezone } from "./types/global";
+import type { DateFormats, DateTypes, Locales, Timezones } from "./types/global";
 
 class Validate {
   static timestamps(
-    timestamp1: number = Date.now(),
-    timestamp2?: number | null,
+    timestamp1 = Date.now(),
+    timestamp2?: number | null
   ): {
     timestamp1: number;
     timestamp2: number;
   } {
-    if (new Date(timestamp1).getFullYear() <= 2000 && !timestamp2) {
+    const date = new Date(timestamp1);
+    const fullYear = date.getFullYear();
+
+    if (fullYear <= 2000 && !timestamp2) {
       timestamp2 = timestamp1;
       timestamp1 = 0;
     }
 
-    if (new Date(timestamp1).getFullYear() > 2000 && !timestamp2) {
+    if (fullYear > 2000 && !timestamp2) {
       timestamp2 = Date.now();
     }
 
@@ -33,7 +36,7 @@ class Validate {
     return locale ?? "fr-FR";
   }
 
-  static timezone(timezone?: Timezone): Timezone {
+  static timezone(timezone?: Timezones): Timezones {
     return timezone ?? "Europe/Madrid";
   }
 
@@ -46,9 +49,7 @@ class Validate {
   }
 
   static unit(unit?: number | string): number {
-    if (typeof unit === "string") unit = Number(unit);
-
-    return unit ?? 0;
+    return Number(unit) || 0;
   }
 
   static dateFormat(dateFormat?: DateFormats): DateFormats {

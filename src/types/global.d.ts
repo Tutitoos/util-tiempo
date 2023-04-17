@@ -12,42 +12,36 @@ export type TimeFormats =
   | "yearLong"
   | "yearShort";
 
+export type DateYearAliases = "years" | "year" | "yrs" | "yr" | "y";
+export type DateMonthAliases = "months" | "month" | "mth" | "mh";
+export type DateWeekAliases = "weeks" | "week" | "wk" | "w";
+export type DateDayAliases = "days" | "day" | "d";
+export type DateHourAliases = "hours" | "hour" | "hrs" | "hr" | "h";
+export type DateMinuteAliases = "minutes" | "minute" | "mins" | "min" | "m";
+export type DateSecondAliases = "seconds" | "second" | "secs" | "sec" | "s";
+export type DateMillisecondAliases = "milliseconds" | "millisecond" | "msecs" | "msec" | "ms";
+export type DateNameAliases = "year" | "month" | "week" | "day" | "hour" | "minute" | "second" | "millisecond";
+
 export type DateTypes =
-  | "years"
-  | "year"
-  | "yrs"
-  | "yr"
-  | "y"
-  | "months"
-  | "month"
-  | "mth"
-  | "mh"
-  | "weeks"
-  | "week"
-  | "w"
-  | "days"
-  | "day"
-  | "d"
-  | "hours"
-  | "hour"
-  | "hrs"
-  | "hr"
-  | "h"
-  | "minutes"
-  | "minute"
-  | "mins"
-  | "min"
-  | "m"
-  | "seconds"
-  | "second"
-  | "secs"
-  | "sec"
-  | "s"
-  | "milliseconds"
-  | "millisecond"
-  | "msecs"
-  | "msec"
-  | "ms";
+  | DateYearAliases
+  | DateMonthAliases
+  | DateWeekAliases
+  | DateDayAliases
+  | DateHourAliases
+  | DateMinuteAliases
+  | DateSecondAliases
+  | DateMillisecondAliases;
+
+export type DateList = Record<
+  DateNameAliases,
+  {
+    name: string;
+    plural: string;
+    aliases: DateTypes[];
+    unit: number;
+    get: () => number;
+  }
+>;
 
 export type Locales =
   | "ar-SA"
@@ -104,7 +98,7 @@ export type Locales =
   | "zh-HK"
   | "zh-TW";
 
-export type Timezone =
+export type Timezones =
   | "Africa/Abidjan"
   | "Africa/Accra"
   | "Africa/Addis_Ababa"
