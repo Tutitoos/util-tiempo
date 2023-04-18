@@ -5,14 +5,14 @@ export const dateList: DateList = {
     name: "año",
     plural: "s",
     aliases: ["years", "year", "yrs", "yr", "y"],
-    unit: 31536000000,
+    unit: 31556926000,
     get: () => new Date().getFullYear(),
   },
   month: {
     name: "mes",
     plural: "es",
     aliases: ["months", "month", "mth", "mh"],
-    unit: 2592000000,
+    unit: 2629743000,
     get: () => new Date().getMonth(),
   },
   week: {
