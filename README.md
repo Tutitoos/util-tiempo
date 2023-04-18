@@ -19,12 +19,12 @@
 
 ## Funciones disponibles
 
--   [`get()`](#get)
--   [`getMs()`](#getMs)
--   [`getTime()`](#getTime)
--   [`getDate()`](#getDate)
--   [`getCompareDate()`](#getCompareDate)
--   [`getFormatDate()`](#getFormatDate)
+- [`get()`](#get)
+- [`getMs()`](#getMs)
+- [`getTime()`](#getTime)
+- [`getDate()`](#getDate)
+- [`getCompareDate()`](#getCompareDate)
+- [`getFormatDate()`](#getFormatDate)
 
 <h2 id="ejemplo">Ejemplo</h2>
 
@@ -36,9 +36,23 @@ Usamos el siguiente _`timestamp`_ como ejemplo para que puedas ver el formato de
 **- Fecha y hora (GMT):** `4 de mayo de 2006 13:02:03`
 
 ```js
-const { get, getMs, getTime, getDate, getCompareDate, getFormatDate } = require("util-tiempo");
+const {
+  get,
+  getMs,
+  getTime,
+  getDate,
+  getCompareDate,
+  getFormatDate,
+} = require("util-tiempo");
 // alternativa
-import { get, getMs, getTime, getDate, getCompareDate, getFormatDate } from "util-tiempo";
+import {
+  get,
+  getMs,
+  getTime,
+  getDate,
+  getCompareDate,
+  getFormatDate,
+} from "util-tiempo";
 
 // get() argumento ms / s / m / h / d / w / mh / y - 10/8/2021 15:17:10.242 GMT+02:00 DST
 get("ms"); // resultado = '240'
@@ -63,24 +77,33 @@ getMs("1y"); // resultado = '31557600000'
 // getTime() por defecto  timeZone 'Europe/Madrid'
 getTime(); // resultado = Hora actual en 'Europe/Madrid'
 // getTime() timestamp new Date() - timeZone 'Atlantic/Canary'
-getTime(null, { timeZone: "Atlantic/Canary" }); // resultado = Hora actual en 'Atlantic/Canary'
+getTime({ timezone: "Atlantic/Canary" }); // resultado = Hora actual en 'Atlantic/Canary'
 // getTime() timestamp 1146747723000
-getTime(1146747723000); // resultado = '15:02:03'
+getTime({ timestamp: 1146747723000 }); // resultado = '15:02:03'
 // getTime() timestamp 1146747723000 - timeZone 'Atlantic/Canary'
-getTime(1146747723000, { timeZone: "Atlantic/Canary" }); // resultado = '14:02:03'
+getTime({ timestamp: 1146747723000, timeZone: "Atlantic/Canary" }); // resultado = '14:02:03'
 // getTime() timestamp 1146747723000 - local en-US - timeZone 'America/New_York' - hour12 true
-getTime(1146747723000, { local: "en-US", timeZone: "America/New_York", hour12: true }); // resultado = '9:02:03 AM'
+getTime({
+  timestamp: 1146747723000,
+  local: "en-US",
+  timeZone: "America/New_York",
+  hour12: true,
+}); // resultado = '9:02:03 AM'
 
 // getDate() por defecto timeZone 'Europe/Madrid'
 getDate(); // resultado = Fecha actual en 'Europe/Madrid'
 // getDate() timeZone 'Atlantic/Canary'
-getDate(null, { timeZone: "Atlantic/Canary" }); // resultado = Fecha actual en 'Atlantic/Canary'
+getDate({ timeZone: "Atlantic/Canary" }); // resultado = Fecha actual en 'Atlantic/Canary'
 // getDate() timestamp 1146747723000
-getDate(1146747723000); // resultado = '04/05/2006'
+getDate({ timestamp: 1146747723000 }); // resultado = '04/05/2006'
 // getDate() timestamp 1146747723000 - timeZone 'Atlantic/Canary'
-getDate(1146747723000, { timeZone: "Atlantic/Canary" }); // resultado = '04/05/2006'
+getDate({ timestamp: 1146747723000, timeZone: "Atlantic/Canary" }); // resultado = '04/05/2006'
 // getDate() timestamp 1146747723000 - local en-US - timeZone 'America/New_York'
-getDate(1146747723000, { local: "en-US", timeZone: "America/New_York" }); // resultado = '5/4/2006'
+getDate({
+  timestamp: 1146747723000,
+  local: "en-US",
+  timeZone: "America/New_York",
+}); // resultado = '5/4/2006'
 
 // getCompareDate() timestamp(1) 76500000 - timestamp(2) por defecto new Date()
 getCompareDate(76500000); // resultado = '21 horas 15 minutos'
@@ -90,16 +113,17 @@ getCompareDate(1146747723, 1146747723 + 76500000); // resultado = '21 horas 15 m
 // getFormatDate() por defecto timeZone 'Europe/Madrid' - format DD/MM/YYYY hh:mm:ss
 getFormatDate(); // resultado = Tiempo y fecha  actual en el formato 'DD/MM/YYYY hh:mm:ss' = '04/05/2006 15:02:03'
 // getFormatDate() timestamp 1146747723000
-getFormatDate(1146747723000); // resultado = '04/05/2006 15:02:03'
+getFormatDate({ timestamp: 1146747723000 }); // resultado = '04/05/2006 15:02:03'
 // getFormatDate() format 15.02.03
-getFormatDate(1146747723000, { format: "{hh}.{mm}.{ss}" }); // resultado = '15.02.03'
+getFormatDate({ timestamp: 1146747723000, format: "{hh}.{mm}.{ss}" }); // resultado = '15.02.03'
 // getFormatDate() format 4-5-06
-getFormatDate(1146747723000, { format: "{D}-{M}-{YY}" }); // resultado = '4-5-06'
+getFormatDate({ timestamp: 1146747723000, format: "{D}-{M}-{YY}" }); // resultado = '4-5-06'
 // getFormatDate() timestamp 1146747723000 - timeZone 'America/New_York' - hour12 true - format 9:02:03 AM - 04/05/2006
-getFormatDate(1146747723000, {
-    timeZone: "America/New_York",
-    hour12: true,
-    format: "{h}:{mm}:{ss} {apm} - {DD}/{MM}/{YYYY}",
+getFormatDate({
+  timestamp: 1146747723000,
+  timeZone: "America/New_York",
+  hour12: true,
+  format: "{h}:{mm}:{ss} {apm} - {DD}/{MM}/{YYYY}",
 }); // resultado = '9:02:03 AM - 04/05/2006'
 ```
 
@@ -115,20 +139,43 @@ getFormatDate(1146747723000, {
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 **_No escribas en los argumentos los símbolos `< >`._**
 
--   **&lt;argumento&gt;**
-    -   Añade la unidad de tiempo `{tiempo}`. Por ejemplo, para que te devuelva el año actual `2021` debes de pasar como argumento `y` .
-    -   **Unidades de tiempo:**
-        -   Años: `years`, `year`, `yrs`, `yr`, `y`
-        -   Meses: `months`, `month`, `mth`, `mh`
-        -   Semanas: `weeks`, `week`, `w`
-        -   Días: `days`, `day`, `d`
-        -   Horas: `hours`, `hour`, `hrs`, `hr`, `h`
-        -   Minutos: `minutes`, `minute`, `mins`, `min`, `m`
-        -   Segundos: `seconds`, `second`, `secs`, `sec`, `s`
-        -   Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms`
+- **&lt;argumento&gt;**
+  - Añade la unidad de tiempo `{tiempo}`. Por ejemplo, para que te devuelva el año actual `2023` debes de pasar como argumento `y` .
+  - **Unidades de tiempo:**
+    - Años: `years`, `year`, `yrs`, `yr`, `y`
+    - Meses: `months`, `month`, `mth`, `mh`
+    - Semanas: `weeks`, `week`, `wk`, `w`
+    - Días: `days`, `day`, `d`
+    - Horas: `hours`, `hour`, `hrs`, `hr`, `h`
+    - Minutos: `minutes`, `minute`, `mins`, `min`, `m`
+    - Segundos: `seconds`, `second`, `secs`, `sec`, `s`
+    - Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms`
+
+<h3 id="getMs">
+<code>getMs(&lt;argumento&gt;)</code>
+</h3>
+
+> **ℹ DESCRIPCIÓN:**<br>
+> Convierte la cantidad de tiempo que pasas como argumento en milisegundos.
+
+Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
+**_No escribas en los argumentos los símbolos `< >`._**
+
+- **&lt;argumento&gt;**
+  - Añade la cantidad de tiempo deseada con su unidad de tiempo `{num}{tiempo}`. Por ejemplo, para que te devuelva la cantidad de milisegundos de `1 año` debes de pasar como argumento `1y` .
+  - Si no añades la unidad de tiempo, el código reconocerá que la cantidad de tiempo es en _`milisegundos`_.
+  - **Unidades de tiempo:**
+    - Años: `years`, `year`, `yrs`, `yr`, `y`
+    - Meses: `months`, `month`, `mth`, `mh`
+    - Semanas: `weeks`, `week`, `wk`, `w`
+    - Días: `days`, `day`, `d`
+    - Horas: `hours`, `hour`, `hrs`, `hr`, `h`
+    - Minutos: `minutes`, `minute`, `mins`, `min`, `m`
+    - Segundos: `seconds`, `second`, `secs`, `sec`, `s`
+    - Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms` o no añadas la unidad de tiempo
 
 <h3 id="getTime">
-<code>getTime(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
+<code>getTime({timestamp: &lt;tiempo&gt;, local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;})</code>
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br>
@@ -138,22 +185,21 @@ Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en él [**ejemplo**](#ejemplo).<br>
 **_No escribas en los argumentos los símbolos `< >`._**
 
--   **&lt;tiempo&gt;** _[OPCIONAL]_
-    -   Si no se define o es `null` estará tomando el tiempo actual, es decir, `getTime()` es equivalente a `getTime(null)`.
-    -   El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
-    -   Si defines un argumento que no sea el tiempo (_`local`_, _`timeZone`_, _`hour12`_), deberás de definir el argumento tiempo (_`null`_ como el tiempo actual)
--   **local: &lt;formato&gt;** _[OPCIONAL]_
-    -   Puedes revisar la lista de [**formatos locales**](#local).
-    -   Si no se define este argumento, tomará el formato _`hh:mm:ss`_
--   **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
-    -   Puedes revisar la lista de [**zonas horarias**](#timezone).
-    -   Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
--   **hour12: &lt;true/false&gt;** _[OPCIONAL]_
-    -   Si quieres que el formato de la hora sea en _`12h`_, define este argumento como _`true`_.
-    -   Si quieres que el formato de la hora sea en _`24h`_, no definas el argumento o defínelo como _`false`_.
+- **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
+  - Si no se define estará tomando el tiempo actual.
+  - El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
+- **local: &lt;formato&gt;** _[OPCIONAL]_
+  - Puedes revisar la lista de [**formatos locales**](#local).
+  - Si no se define este argumento, tomará el formato _`hh:mm:ss`_
+- **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
+  - Puedes revisar la lista de [**zonas horarias**](#timezone).
+  - Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
+- **hour12: &lt;true/false&gt;** _[OPCIONAL]_
+  - Si quieres que el formato de la hora sea en _`12h`_, define este argumento como _`true`_.
+  - Si quieres que el formato de la hora sea en _`24h`_, no definas el argumento o defínelo como _`false`_.
 
 <h3 id="getDate">
-<code>getDate(&lt;tiempo&gt;, {local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
+<code>getDate({timestamp: &lt;tiempo&gt;, local: &lt;formato&gt;, timeZone: &lt;zonahoraria&gt;})</code>
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br>
@@ -163,19 +209,18 @@ Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 **_No escribas en los argumentos los símbolos `< >`._**
 
--   **&lt;tiempo&gt;** _[OPCIONAL]_
-    -   Si no se define o es `null` estará tomando el tiempo actual, es decir, `getDate()` es equivalente a `getDate(null)`.
-    -   El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
-    -   Si defines un argumento que no sea el tiempo (_`local`_, _`timeZone`_), deberás de definir el argumento tiempo (_`null`_ como el tiempo actual)
--   **local: &lt;formato&gt;** _[OPCIONAL]_
-    -   Puedes revisar la lista de [**formatos locales**](#local).
-    -   Si no se define este argumento, tomará el formato _`DD/MM/YYYY`_
--   **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
-    -   Puedes revisar la lista de [**zonas horarias**](#timezone).
-    -   Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
+- **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
+  - Si no se define `estará tomando el tiempo actual.
+  - El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
+- **local: &lt;formato&gt;** _[OPCIONAL]_
+  - Puedes revisar la lista de [**formatos locales**](#local).
+  - Si no se define este argumento, tomará el formato _`DD/MM/YYYY`_
+- **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
+  - Puedes revisar la lista de [**zonas horarias**](#timezone).
+  - Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
 
 <h3 id="getCompareDate">
-<code>getCompareDate(&lt;tiempo1&gt;, &lt;tiempo2&gt;, {&lt;format&gt;})</code>
+<code>getCompareDate({timestamp1: &lt;tiempo1&gt;, timestamp2: &lt;tiempo2&gt;, format: &lt;formato&gt;})</code>
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br>
@@ -185,16 +230,16 @@ El segundo tiempo es opcional.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 **_No escribas en los argumentos los símbolos `< >`._**
 
--   **&lt;tiempo1&gt;**
-    -   El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
--   **&lt;tiempo2&gt;** _[OPCIONAL]_
-    -   El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
-    -   Si se define este argumento, el código calculará la diferencia entre los dos tiempos y te devolverá el resultado con la diferencia.
--   **&lt;format&gt;** _[OPCIONAL]_
-    Hacer - Puedes revisar la lista de [**formatos locales**](#local). - Si no se define este argumento, tomará el formato _`DD/MM/YYYY`_
+- **timestamp1: &lt;tiempo1&gt;** _[OPCIONAL]_
+  - El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
+- **timestamp2: &lt;tiempo2&gt;** _[OPCIONAL]_
+  - El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
+  - Si se define este argumento, el código calculará la diferencia entre los dos tiempos y te devolverá el resultado con la diferencia.
+- **format: &lt;formato&gt;** _[OPCIONAL]_
+  Hacer - Puedes revisar la lista de [**formatos locales**](#local). - Si no se define este argumento, tomará el formato _`DD/MM/YYYY`_
 
-<h3 id="getFormat">
-<code>getFormat(&lt;tiempo&gt;, {timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;, format: &lt;formato&gt;})</code>
+<h3 id="getFormatDate">
+<code>getFormatDate({timestamp: &lt;tiempo&gt;, timeZone: &lt;zonahoraria&gt;, hour12: &lt;true/false&gt;, format: &lt;formato&gt;})</code>
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br>
@@ -204,89 +249,26 @@ Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 **_No escribas en los argumentos los símbolos `< >`._**
 
--   **&lt;tiempo&gt;** _[OPCIONAL]_
-    -   Si no se define o es `null` estará tomando el tiempo actual, es decir, `getFormat()` es equivalente a `getFormat(null)`.
-    -   El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
-    -   Si defines un argumento que no sea el tiempo (_`local`_, _`timeZone`_), deberás de definir el argumento tiempo (_`null`_ como el tiempo actual)
--   **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
-    -   Puedes revisar la lista de [**zonas horarias**](#timezone).
-    -   Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
--   **hour12: &lt;true/false&gt;** _[OPCIONAL]_
-    -   Si quieres que el formato de la hora sea en _`12h`_, define este argumento como _`true`_.
-    -   Si quieres que el formato de la hora sea en _`24h`_, no definas el argumento o defínelo como _`false`_.
--   **format: &lt;formato&gt;** _[OPCIONAL]_
-    -   Si no defines este argumento, por defecto te mostrará el tiempo en el formato _`DD/MM/YYYY hh:mm:ss`_.
-    -   Puedes definir el formato de la fecha que prefieras con las siguientes variables:
-        -   Hora: _`{hh}`_ en dos dígitos, _`{h}`_ en un dígito [`01:02:03` => *`{hh}`* = `'01'`, *`{h}`* = `'1'`]
-        -   Minutos: _`{mm}`_ en dos dígitos, _`{m}`_ en un dígito [`01:02:03` => *`{mm}`* = `'02'`, *`{m}`* = `'2'`]
-        -   Segundos: _`{ss}`_ en dos dígitos, _`{s}`_ en un dígito [`01:02:03` => *`{ss}`* = `'03'`, *`{s}`* = `'3'`]
-        -   Día: _`{DD}`_ en dos dígitos, _`{D}`_ en un dígito [`04/05/2006` => *`{DD}`* = `'04'`, *`{D}`* = `'4'`]
-        -   Mes: _`{MM}`_ en dos dígitos, _`{M}`_ en un dígito [`04/05/2006` => *`{MM}`* = `'05'`, *`{M}`* = `'5'`]
-        -   Año: _`{YYYY}`_ en cuatro dígitos, _`{YY}`_ en dos dígitos [`04/05/2006` => *`{YYYY}`* = `'2006'`, *`{YY}`* = `'06'`]
-        -   AM/PM: _`{apm}`_ \*Solo se mostrará si esta definido `hour12: true`
-    -   **EJEMPLO**: `"{DD}/{MM}/{YYYY} {hh}:{mm}:{ss}"`. Este ejemplo es como se escribiría el formato que el código tiene por defecto.
-
-<h3 id="getCompareDate">
-<code>getCompareDate(&lt;tiempo1&gt;, &lt;tiempo2&gt;)</code>
-</h3>
-
-> **ℹ DESCRIPCIÓN:**<br>
-> Este comando te devuelve la diferencia entre dos fechas o cuanto tiempo son los milisegundos que le pasas.
-
-El segundo tiempo es opcional.<br>
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
-
--   **&lt;tiempo1&gt;**
-    -   El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
--   **&lt;tiempo2&gt;** _[OPCIONAL]_
-    -   El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
-    -   Si se define este argumento, el código calculará la diferencia entre los dos tiempos y te devolverá el resultado con la diferencia.
-
-<h3 id="getFormatMs">
-<code>getFormatMs(&lt;argumento&gt;)</code>
-</h3>
-
-> **ℹ DESCRIPCIÓN:**<br>
-> Convierte la cantidad de tiempo que pasas como argumento en milisegundos.
-
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
-
--   **&lt;argumento&gt;**
-    -   Añade la cantidad de tiempo deseada con su unidad de tiempo `{num}{tiempo}`. Por ejemplo, para que te devuelva la cantidad de milisegundos de `1 año` debes de pasar como argumento `1y` .
-    -   Si no añades la unidad de tiempo, el código reconocerá que la cantidad de tiempo es en _`milisegundos`_.
-    -   **Unidades de tiempo:**
-        -   Años: `years`, `year`, `yrs`, `yr`, `y`
-        -   Meses: `months`, `month`, `mth`, `mh`
-        -   Semanas: `weeks`, `week`, `w`
-        -   Días: `days`, `day`, `d`
-        -   Horas: `hours`, `hour`, `hrs`, `hr`, `h`
-        -   Minutos: `minutes`, `minute`, `mins`, `min`, `m`
-        -   Segundos: `seconds`, `second`, `secs`, `sec`, `s`
-        -   Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms` o no añadas la unidad de tiempo
-
-<h3 id="get">
-<code>get(&lt;argumento&gt;)</code>
-</h3>
-
-> **ℹ DESCRIPCIÓN:**<br>
-> Este comando te devuelve la unidad de tiempo que le pasas como argumento.
-
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
-
--   **&lt;argumento&gt;**
-    -   Añade la unidad de tiempo `{tiempo}`. Por ejemplo, para que te devuelva el año actual `2021` debes de pasar como argumento `y` .
-    -   **Unidades de tiempo:**
-        -   Años: `years`, `year`, `yrs`, `yr`, `y`
-        -   Meses: `months`, `month`, `mth`, `mh`
-        -   Semanas: `weeks`, `week`, `w`
-        -   Días: `days`, `day`, `d`
-        -   Horas: `hours`, `hour`, `hrs`, `hr`, `h`
-        -   Minutos: `minutes`, `minute`, `mins`, `min`, `m`
-        -   Segundos: `seconds`, `second`, `secs`, `sec`, `s`
-        -   Milisegundos: `milliseconds`, `millisecond`, `msecs`, `msec`, `ms`
+- **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
+  - Si no se define estará tomando el tiempo actual.
+  - El tiempo lo tienes que definir como _`timestamp`_, el código reconoce si está en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools").
+- **timeZone: &lt;zonahoraria&gt;** _[OPCIONAL]_
+  - Puedes revisar la lista de [**zonas horarias**](#timezone).
+  - Si no se define este argumento, tomará el tiempo de _`Europe/Madrid`_
+- **hour12: &lt;true/false&gt;** _[OPCIONAL]_
+  - Si quieres que el formato de la hora sea en _`12h`_, define este argumento como _`true`_.
+  - Si quieres que el formato de la hora sea en _`24h`_, no definas el argumento o defínelo como _`false`_.
+- **format: &lt;formato&gt;** _[OPCIONAL]_
+  - Si no defines este argumento, por defecto te mostrará el tiempo en el formato _`DD/MM/YYYY hh:mm:ss`_.
+  - Puedes definir el formato de la fecha que prefieras con las siguientes variables:
+    - Hora: _`{hh}`_ en dos dígitos, _`{h}`_ en un dígito [`01:02:03` => *`{hh}`* = `'01'`, *`{h}`* = `'1'`]
+    - Minutos: _`{mm}`_ en dos dígitos, _`{m}`_ en un dígito [`01:02:03` => *`{mm}`* = `'02'`, *`{m}`* = `'2'`]
+    - Segundos: _`{ss}`_ en dos dígitos, _`{s}`_ en un dígito [`01:02:03` => *`{ss}`* = `'03'`, *`{s}`* = `'3'`]
+    - Día: _`{DD}`_ en dos dígitos, _`{D}`_ en un dígito [`04/05/2006` => *`{DD}`* = `'04'`, *`{D}`* = `'4'`]
+    - Mes: _`{MM}`_ en dos dígitos, _`{M}`_ en un dígito [`04/05/2006` => *`{MM}`* = `'05'`, *`{M}`* = `'5'`]
+    - Año: _`{YYYY}`_ en cuatro dígitos, _`{YY}`_ en dos dígitos [`04/05/2006` => *`{YYYY}`* = `'2006'`, *`{YY}`* = `'06'`]
+    - AM/PM: _`{apm}`_ \*Solo se mostrará si esta definido `hour12: true`
+  - **EJEMPLO**: `"{DD}/{MM}/{YYYY} {hh}:{mm}:{ss}"`. Este ejemplo es como se escribiría el formato que el código tiene por defecto.
 
 ## Variables del tiempo
 
