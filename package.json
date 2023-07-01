@@ -32,7 +32,7 @@
     "lint:install": "npm install -g rome eslint"
   },
   "devDependencies": {
-    "@types/node": "18.11.19",
+    "@types/node": "18.16.19",
     "@typescript-eslint/eslint-plugin": "5.50.0",
     "@typescript-eslint/parser": "5.50.0",
     "eslint": "8.33.0",
