@@ -1,5 +1,8 @@
-import type { DateList } from "./types/global";
+import type { DateFormats, DateList, DateOptions } from "./types/global";
 
+/**
+ * List of date units with their properties.
+ */
 export const dateList: DateList = {
   year: {
     name: "año",
@@ -63,4 +66,24 @@ export const dateList: DateList = {
     unit: 1,
     get: () => new Date().getMilliseconds(),
   },
+};
+
+/**
+ * Compare data parse function.
+ * @param unit - The unit number.
+ * @param format - The date format.
+ * @param options - The date options.
+ * @returns The parsed string.
+ */
+export const compareDataParse = (unit: number, format: DateFormats, options: DateOptions): string => {
+  const { name, plural, aliases } = options;
+
+  // Check if format is "long"
+  if (format === "long") {
+    // Return formatted string with unit and name
+    return `${unit} ${name}${unit > 1 ? plural : ""}`;
+  }
+
+  // Return formatted string with unit and last alias
+  return `${unit} ${aliases.at(-1) as string}`;
 };

@@ -1,6 +1,6 @@
 # util-tiempo
 
-## **_util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!_**
+## **_util-tiempo es un módulo de utilidades para cálculos de tiempo y obtención de fechas seleccionables con diversas opciones.!_**
 
 ---
 
@@ -15,7 +15,7 @@
 </div>
 
 > **⚠ ADVERTENCIA:**<br>
-> Los tiempos tienen que estar en **_`milisegundos`_**. En el caso de que estén en _`segundos`_, basta con multiplicarlos por mil (*`*1000`\*).
+> Los tiempos deben estar en **_`milisegundos`_**. Si los tiempos están en **_`segundos`_**, simplemente multiplícalos por mil (`*1000`\).
 
 ## Funciones disponibles
 
@@ -28,11 +28,11 @@
 
 <h2 id="ejemplo">Ejemplo</h2>
 
-Te dejamos un ejemplo del código que te puede ser útil a la hora de obtener los datos.
+Aquí tienes un ejemplo de cómo puedes obtener los datos utilizando el código proporcionado.
 
-Usamos el siguiente _`timestamp`_ como ejemplo para que puedas ver el formato de los datos que se obtienen.<br>
-**- timestamp (segundos):** `1146747723`<br>
-**- timestamp (milisegundos):** `1146747723000`<br>
+Utilizaremos el siguiente _`timestamp`_ como ejemplo para mostrar el formato de los datos obtenidos:<br>
+**- Timestamp (segundos):** `1146747723`<br>
+**- Timestamp (milisegundos):** `1146747723000`<br>
 **- Fecha y hora (GMT):** `4 de mayo de 2006 13:02:03`
 
 ```js
@@ -134,14 +134,14 @@ getFormatDate({
 </h3>
 
 > **ℹ DESCRIPCIÓN:**<br>
-> Este comando te devuelve la unidad de tiempo que le pasas como argumento.
+> Esta función devuelve la unidad de tiempo especificada como argumento.
 
-Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+Puedes ver cómo se utilizan los argumentos en el[**ejemplo**](#ejemplo).<br>
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **&lt;argumento&gt;**
-  - Añade la unidad de tiempo `{tiempo}`. Por ejemplo, para que te devuelva el año actual `2023` debes de pasar como argumento `y` .
-  - **Unidades de tiempo:**
+  - La unidad de tiempo `{tiempo}` que se desea obtener. Por ejemplo, para obtener el año actual `2023` debes de pasar como argumento `y` .
+  - **Unidades de tiempo admitidas:**
     - Años: `years`, `year`, `yrs`, `yr`, `y`
     - Meses: `months`, `month`, `mth`, `mh`
     - Semanas: `weeks`, `week`, `wk`, `w`
@@ -159,7 +159,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 > Convierte la cantidad de tiempo que pasas como argumento en milisegundos.
 
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **&lt;argumento&gt;**
   - Añade la cantidad de tiempo deseada con su unidad de tiempo `{num}{tiempo}`. Por ejemplo, para que te devuelva la cantidad de milisegundos de `1 año` debes de pasar como argumento `1y` .
@@ -183,7 +183,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en él [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
   - Si no se define estará tomando el tiempo actual.
@@ -207,7 +207,7 @@ Puedes ver como se usan los argumentos en él [**ejemplo**](#ejemplo).<br>
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
   - Si no se define `estará tomando el tiempo actual.
@@ -228,7 +228,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 
 El segundo tiempo es opcional.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **timestamp1: &lt;tiempo1&gt;** _[OPCIONAL]_
   - El tiempo lo puedes definir como _`timestamp`_, este debe estar en _`milisegundos`_. Puedes obtener el _`timestamp`_ de una fecha en concreta en esta [página](https://www.epochconverter.com/ "Epoch & Unix Timestamp Conversion Tools"). También puedes añadirle una cantidad de milisegundos en concreto.
@@ -247,7 +247,7 @@ Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
 
 Todos los argumentos son opcionales.<br>
 Puedes ver como se usan los argumentos en el [**ejemplo**](#ejemplo).<br>
-**_No escribas en los argumentos los símbolos `< >`._**
+**_No incluyas los símbolos `< >` al especificar el argumento._**
 
 - **timestamp: &lt;tiempo&gt;** _[OPCIONAL]_
   - Si no se define estará tomando el tiempo actual.

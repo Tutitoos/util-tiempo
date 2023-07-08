@@ -20,11 +20,11 @@
     "formatDate",
     "formatMs"
   ],
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node lib/index.js",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only --poll src/index.ts",
     "lint": "npm run lint:rome && npm run lint:eslint",
     "lint:rome": "rome check src",
@@ -32,17 +32,15 @@
     "lint:install": "npm install -g rome eslint"
   },
   "devDependencies": {
-    "@types/node": "18.11.19",
-    "@typescript-eslint/eslint-plugin": "5.50.0",
-    "@typescript-eslint/parser": "5.50.0",
-    "eslint": "8.33.0",
-    "eslint-config-prettier": "8.6.0",
+    "@types/estree": "1.0.1",
+    "@types/node": "20.4.1",
+    "eslint": "8.44.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-config-xo": "0.43.1",
-    "eslint-config-xo-typescript": "0.55.1",
-    "nodemon": "2.0.20",
-    "ts-node": "10.9.1",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "4.9.5"
-  },
-  "dependencies": {}
+    "eslint-config-xo-typescript": "0.57.0",
+    "eslint-plugin-import": "2.27.5",
+    "nodemon": "2.0.22",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.1.6"
+  }
 }

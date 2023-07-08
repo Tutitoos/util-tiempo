@@ -4,13 +4,17 @@ module.exports = {
     node: true,
   },
   extends: ["xo", "prettier"],
+  plugins: ["import"],
   overrides: [
     {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
-        "no-unused-vars": ["error"],
+        "import/first": "error",
+        "import/no-duplicates": "error",
+        "no-duplicate-imports": "error",
         "no-implicit-coercion": "off",
+        "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
           "interface",
@@ -19,6 +23,7 @@ module.exports = {
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/no-extraneous-class": "off",
+        "guard-for-in": "off",
       },
     },
   ],
@@ -26,5 +31,10 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "import/first": "error",
+    "import/no-duplicates": "error",
+    "no-duplicate-imports": "error",
+    "no-implicit-coercion": "off",
+  },
 };

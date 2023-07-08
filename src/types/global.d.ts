@@ -22,6 +22,14 @@ export type DateSecondAliases = "seconds" | "second" | "secs" | "sec" | "s";
 export type DateMillisecondAliases = "milliseconds" | "millisecond" | "msecs" | "msec" | "ms";
 export type DateNameAliases = "year" | "month" | "week" | "day" | "hour" | "minute" | "second" | "millisecond";
 
+export interface DateOptions {
+  name: string;
+  plural: string;
+  aliases: DateTypes[];
+  unit: number;
+  get: () => number;
+}
+
 export type DateTypes =
   | DateYearAliases
   | DateMonthAliases
@@ -32,16 +40,7 @@ export type DateTypes =
   | DateSecondAliases
   | DateMillisecondAliases;
 
-export type DateList = Record<
-  DateNameAliases,
-  {
-    name: string;
-    plural: string;
-    aliases: DateTypes[];
-    unit: number;
-    get: () => number;
-  }
->;
+export type DateList = Record<DateNameAliases, DateOptions>;
 
 export type Locales =
   | "ar-SA"
