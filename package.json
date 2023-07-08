@@ -1,5 +1,5 @@
 {
-  "name": "@tutitoos/util-tiempo",
+  "name": "util-tiempo",
   "version": "1.0.44",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "author": "Tutitoos",
