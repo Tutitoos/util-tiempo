@@ -1,16 +1,16 @@
-import type { DateFormats, Locales, Timezone } from "./global";
+import type { DateFormats, Locales, Timezones } from "./global";
 
 export interface GetTimeProps {
   timestamp?: number | null;
   local?: Locales;
-  timezone?: Timezone;
+  timezone?: Timezones;
   hour12?: boolean;
 }
 
 export interface GetDateProps {
   timestamp?: number | null;
   local?: Locales;
-  timezone?: Timezone;
+  timezone?: Timezones;
 }
 
 export interface GetCompareDate {
@@ -23,6 +23,6 @@ export interface GetFormatDate {
   timestamp?: number;
   format?: string;
   local?: Locales;
-  timezone?: Timezone;
+  timezone?: Timezones;
   hour12?: boolean;
 }
