@@ -6,6 +6,9 @@
   "license": "MIT",
   "repository": "Tutitoos/util-tiempo.git",
   "publisher": "Tutitoos",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "keywords": [
     "util-tiempo",
     "time",
