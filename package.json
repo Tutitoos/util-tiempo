@@ -1,13 +1,11 @@
 {
-  "name": "util-tiempo",
+  "name": "@tutitoos/util-tiempo",
   "version": "1.0.44",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "author": "Tutitoos",
   "license": "MIT",
-  "repository": "Tutitoos/util-tiempo.git",
-  "publisher": "Tutitoos",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+  "repository": {
+    "url": "git://github.com/tutitoos/util-tiempo.git"
   },
   "keywords": [
     "util-tiempo",
