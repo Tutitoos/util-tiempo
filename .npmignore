@@ -1,5 +1,6 @@
 .editorconfig
-.eslintrc.json
+.eslintrc.cjs
 tsconfig.json
+renovate.json
 node_modules/
 src/
