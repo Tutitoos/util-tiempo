@@ -78,12 +78,14 @@ export const dateList: DateList = {
 export const compareDataParse = (unit: number, format: DateFormats, options: DateOptions): string => {
   const { name, plural, aliases } = options;
 
+  const unitParsed = parseFloat(`${unit}`);
+
   // Check if format is "long"
   if (format === "long") {
     // Return formatted string with unit and name
-    return `${unit} ${name}${unit > 1 ? plural : ""}`;
+    return `${unitParsed} ${name}${unit > 1 ? plural : ""}`;
   }
 
   // Return formatted string with unit and last alias
-  return `${unit} ${aliases.at(-1) as string}`;
+  return `${unitParsed} ${aliases.at(-1) as string}`;
 };

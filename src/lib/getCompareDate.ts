@@ -1,18 +1,18 @@
 import Validate from "../Validate";
-import type { GetCompareDate } from "../types";
+import type { GetCompareDateProps } from "../types";
 import { type DateNameAliases } from "../types/global";
 import { compareDataParse, dateList } from "../util";
 
 /**
  * Returns a formatted string representing the difference between two timestamps.
- *
  * @param options - An optional object containing the timestamps and format options.
  * @returns The formatted string representing the difference between the two timestamps.
  */
-const getCompareDate = (options?: GetCompareDate): string => {
-  // Validate and extract the timestamps and format from the options object
-  const { timestamp1, timestamp2 } = Validate.timestamps(options?.timestamp1, options?.timestamp2);
-  const format = Validate.dateFormat(options?.format);
+const getCompareDate = (...options: Partial<GetCompareDateProps>): string => {
+  // Parse and validate the options
+  const parseOptions = Validate.optionsCompareData(options);
+  const { timestamp1, timestamp2 } = Validate.timestamps(parseOptions?.timestamp1, parseOptions?.timestamp2);
+  const format = Validate.dateFormat(parseOptions?.format);
 
   // Calculate the elapsed time in milliseconds
   const elapsed = Math.abs(timestamp2 - timestamp1);
@@ -55,18 +55,16 @@ const getCompareDate = (options?: GetCompareDate): string => {
           diff += compareDataParse(valueParsed, format, dateList.second);
           break;
         default: {
-          diff += compareDataParse(valueParsed, format, dateList.millisecond);
+          if (elapsed < 1000) diff += compareDataParse(valueParsed, format, dateList.millisecond);
           break;
         }
       }
 
+      // Add a separator if the remaining value is greater than or equal to 60000 (1 minute)
+      if (value >= 60000) diff += format === "long" ? ", " : " ";
+
       // Update the remaining value
       value -= Math.floor(elapsed / unit) * unit;
-
-      // Add a separator if the remaining value is greater than or equal to 60000 (1 minute)
-      if (value >= 60000) {
-        diff += format === "long" ? ", " : " ";
-      }
     }
   }
 

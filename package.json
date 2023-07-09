@@ -1,6 +1,6 @@
 {
   "name": "@tutitoos/util-tiempo",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "author": "Tutitoos",
   "license": "MIT",
@@ -18,7 +18,14 @@
     "dataDate",
     "diffDate",
     "formatDate",
-    "formatMs"
+    "formatMs",
+    "get",
+    "getCompareDate",
+    "getDate",
+    "getTime",
+    "getNextTime",
+    "getMs",
+    "getFormatDate"
   ],
   "main": "dist/index.js",
   "types": "types/index.d.ts",

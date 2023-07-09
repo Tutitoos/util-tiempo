@@ -1,5 +1,5 @@
 import Validate from "../Validate";
-import type { GetFormatDate } from "../types";
+import type { GetFormatDateProps } from "../types";
 import type { HourFormats, TimeFormats } from "../types/global";
 
 /**
@@ -8,13 +8,14 @@ import type { HourFormats, TimeFormats } from "../types/global";
  * @param options - Optional parameters for formatting the date
  * @returns The formatted date string
  */
-const getFormatDate = (options?: GetFormatDate) => {
-  // Validate and assign the timestamp, locale, timezone, hour12, and format options
-  const timestamp = Validate.timestamp(options?.timestamp);
-  const local = Validate.locale(options?.local ?? "pt-PT");
-  const timezone = Validate.timezone(options?.timezone);
-  const hour12 = Validate.hour12(options?.hour12);
-  const format = options?.format ?? "{DD}/{MM}/{YYYY} {hh}:{mm}:{ss} {apm}";
+const getFormatDate = (...options: Partial<GetFormatDateProps>) => {
+  // Parse the options and validate them
+  const parseOptions = Validate.optionsFormatDate(options);
+  const timestamp = Validate.timestamp(parseOptions?.timestamp);
+  const local = Validate.locale(parseOptions?.local ?? "pt-PT");
+  const timezone = Validate.timezone(parseOptions?.timezone);
+  const hour12 = Validate.hour12(parseOptions?.hour12);
+  const format = parseOptions?.format ?? "{DD}/{MM}/{YYYY} {hh}:{mm}:{ss} {apm}";
 
   let content = format;
   let apm = "";

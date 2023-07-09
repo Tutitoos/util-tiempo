@@ -1,9 +1,9 @@
+import { type GetTime, type GetNextTime, type GetFormatDate, type GetDate, type GetCompareDate } from "./types";
 import type { DateFormats, DateTypes, Locales, Timezones } from "./types/global";
 
 class Validate {
   /**
    * Generate timestamps.
-   *
    * @param timestamp1 - The first timestamp. Defaults to the current timestamp.
    * @param timestamp2 - The second timestamp. If not provided, defaults to the current timestamp.
    * @returns An object containing timestamp1 and timestamp2.
@@ -45,7 +45,6 @@ class Validate {
   /**
    * Returns the current timestamp or the provided timestamp if not null.
    * If no timestamp is provided, the current timestamp is used.
-   *
    * @param timestamp - An optional timestamp to use.
    * @returns The current timestamp or the provided timestamp if not null.
    */
@@ -65,7 +64,6 @@ class Validate {
 
   /**
    * Returns the specified timezone or defaults to "Europe/Madrid".
-   *
    * @param timezone - The timezone to return.
    * @returns The specified timezone or "Europe/Madrid" if no timezone is provided.
    */
@@ -75,7 +73,6 @@ class Validate {
 
   /**
    * Returns a boolean value indicating whether the time format is 12-hour or not.
-   *
    * @param hour12 - Optional parameter indicating the desired time format. If not provided, defaults to false.
    * @returns A boolean value indicating whether the time format is 12-hour (true) or not (false).
    */
@@ -85,7 +82,6 @@ class Validate {
 
   /**
    * Returns the date type.
-   *
    * @param dateType - The input date type.
    * @returns The date type. Defaults to "ms" if not provided.
    */
@@ -111,6 +107,102 @@ class Validate {
   static dateFormat(dateFormat?: DateFormats): DateFormats {
     // Use nullish coalescing operator to default to "long" if dateFormat is undefined or null
     return dateFormat ?? "long";
+  }
+
+  /**
+   * Returns the time value if provided, otherwise an empty string.
+   * @param time - Optional time value.
+   * @returns The time value if provided, otherwise an empty string.
+   */
+  static time(time?: string): string {
+    return time ?? "";
+  }
+
+  /**
+   * Returns the next time based on the given options.
+   * @param options - An array of options.
+   * @returns The next time.
+   */
+  static optionsNextTime(options: any[]): GetNextTime {
+    // If the first option is an object, return it directly.
+    if (typeof options[0] === "object") return options[0] as GetNextTime;
+
+    // Otherwise, create a new GetNextTime object with the first option as time and the second option as timezone.
+    return {
+      time: options[0] as string,
+      timezone: options[1] as Timezones,
+    };
+  }
+
+  /**
+   * Converts options array to GetTimeProps object.
+   * @param options - The options array.
+   * @returns The GetTimeProps object.
+   */
+  static optionsTime(options: any[]): GetTime {
+    // If the first element of options is an object, return it directly as GetTimeProps.
+    if (typeof options[0] === "object") return options[0] as GetTime;
+
+    // Otherwise, create a new GetTimeProps object using the elements of options array.
+    return {
+      timestamp: options[0] as number,
+      local: options[1] as Locales,
+      timezone: options[2] as Timezones,
+      hour12: options[3] as boolean,
+    };
+  }
+
+  /**
+   * Converts an array of options to a GetFormatDate object.
+   * @param options - The array of options.
+   * @returns The GetFormatDate object.
+   */
+  static optionsFormatDate(options: any[]): GetFormatDate {
+    // If the first element is an object, return it as a GetFormatDate object.
+    if (typeof options[0] === "object") return options[0] as GetFormatDate;
+
+    // Otherwise, create a new GetFormatDate object using the elements of the options array.
+    return {
+      timestamp: options[0] as number,
+      format: options[1] as string,
+      local: options[2] as Locales,
+      timezone: options[3] as Timezones,
+      hour12: options[4] as boolean,
+    };
+  }
+
+  /**
+   * Extracts the date options from the given array and returns an object with the extracted properties.
+   * @param options - The array of options.
+   * @returns An object with the extracted properties.
+   */
+  static optionsDate(options: any[]): GetDate {
+    // If the first element of options is already an object, return it as it is.
+    if (typeof options[0] === "object") return options[0] as GetDate;
+
+    // Otherwise, create a new object with the extracted properties and return it.
+    return {
+      timestamp: options[0] as number,
+      local: options[1] as Locales,
+      timezone: options[2] as Timezones,
+    };
+  }
+
+  /**
+   * Extracts the compare data from the given options.
+   * @param options - The options array containing the compare data.
+   * @returns The compare data object.
+   */
+  static optionsCompareData(options: any[]): GetCompareDate {
+    // If the first element of options is an object, return it as is
+    if (typeof options[0] === "object") return options[0] as GetCompareDate;
+
+    // Extract the compare data from the options array and return it as an object
+    return {
+      timestamp1: options[0] as number,
+      timestamp2: options[1] as number,
+      format: options[2] as DateFormats,
+    };
   }
 }
 
