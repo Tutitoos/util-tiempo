@@ -1,5 +1,6 @@
 .editorconfig
-.eslintrc.cjs
+.eslintrc.json
+rome.json
 tsconfig.json
 renovate.json
 node_modules/
