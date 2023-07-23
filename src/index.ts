@@ -2,7 +2,6 @@
 
 import * as utilTiempo from "./lib/index";
 
-// Module.exports = utilTiempo;
-
+module.exports = utilTiempo;
 export default utilTiempo;
 export * from "./lib/index";
