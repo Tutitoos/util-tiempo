@@ -1,6 +1,5 @@
 import Validate from "../Validate";
-import type { GetFormatDateProps } from "../types";
-import type { HourFormats, TimeFormats } from "../types/global";
+import type { GetFormatDateProps, HourFormats, TimeFormats } from "../types";
 
 /**
  * Returns a formatted date string based on the provided options.

@@ -1,5 +1,5 @@
 import Validate from "../Validate";
-import type { DateTypes } from "../types/global";
+import type { DateTypes } from "../types";
 import { dateList } from "../util";
 
 /**

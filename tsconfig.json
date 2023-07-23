@@ -6,13 +6,12 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "declaration": true,
-    "declarationDir": "dist",
     "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "strictNullChecks": true
   },
   "include": [
-    "src/**/*.ts"
-  ]
+    "src/**/*.ts",
+  ],
 }

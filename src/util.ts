@@ -1,4 +1,4 @@
-import type { DateFormats, DateList, DateOptions } from "./types/global";
+import type { DateFormats, DateList, DateOptions } from "./types";
 
 /**
  * List of date units with their properties.

@@ -1,5 +1,14 @@
-import { type GetTime, type GetNextTime, type GetFormatDate, type GetDate, type GetCompareDate } from "./types";
-import type { DateFormats, DateTypes, Locales, Timezones } from "./types/global";
+import {
+  type GetTime,
+  type GetNextTime,
+  type GetFormatDate,
+  type GetDate,
+  type GetCompareDate,
+  type DateFormats,
+  type DateTypes,
+  type Locales,
+  type Timezones,
+} from "./types";
 
 class Validate {
   /**

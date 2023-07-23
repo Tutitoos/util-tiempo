@@ -1,6 +1,5 @@
 import Validate from "../Validate";
-import type { GetCompareDateProps } from "../types";
-import { type DateNameAliases } from "../types/global";
+import type { GetCompareDateProps, DateNameAliases } from "../types";
 import { compareDataParse, dateList } from "../util";
 
 /**
