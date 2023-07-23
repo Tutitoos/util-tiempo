@@ -1,4 +1,4 @@
-import utilTiempo from "./lib/index";
+import utilTiempo from "./index";
 
 const runTestGet = true;
 const runTestGetCompareDate = true;

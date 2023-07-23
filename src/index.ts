@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
-import utilTiempo from "./lib/index";
+import * as utilTiempo from "./lib/index";
 
-module.exports = utilTiempo;
+// Module.exports = utilTiempo;
+
+export default utilTiempo;
+export * from "./lib/index";

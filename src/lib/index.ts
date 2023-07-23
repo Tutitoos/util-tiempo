@@ -6,12 +6,4 @@ import getMs from "./getMs";
 import getTime from "./getTime";
 import getNextTime from "./getNextTime";
 
-export default {
-  get,
-  getCompareDate,
-  getDate,
-  getFormatDate,
-  getMs,
-  getTime,
-  getNextTime,
-};
+export { get, getCompareDate, getDate, getFormatDate, getMs, getTime, getNextTime };
