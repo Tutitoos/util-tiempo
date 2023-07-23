@@ -1,6 +1,6 @@
 {
   "name": "util-tiempo",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "description": "util-tiempo para calcular tiempos, para obtener la fecha a elegir, con muchas opciones!",
   "author": "Tutitoos",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "getFormatDate"
   ],
   "main": "dist/index.js",
-  "types": "types/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
