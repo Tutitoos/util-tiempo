@@ -1,5 +1,6 @@
 import Validate from "../Validate";
 import { type GetNextTimeProps } from "../types";
+import { formatDateFromString } from "../util";
 import getMs from "./getMs";
 import getTime from "./getTime";
 
@@ -21,8 +22,11 @@ const getNextTime = (...options: Partial<GetNextTimeProps>): number => {
     throw new Error("Invalid time format, must be HH:MM:SS");
   }
 
+  // Get the current date in the specified timezone
+  const date = formatDateFromString(new Date().toLocaleString(local, { timeZone: timezone }));
+
   // Get the current timestamp in the specified timezone
-  const timestamp = new Date(new Date().toLocaleString(local, { timeZone: timezone })).getTime();
+  const timestamp = new Date(date).getTime();
 
   // Split the time into hour, minute, and second components
   const [hour, minute, second] = getTime({

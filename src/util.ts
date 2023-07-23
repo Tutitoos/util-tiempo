@@ -89,3 +89,33 @@ export const compareDataParse = (unit: number, format: DateFormats, options: Dat
   // Return formatted string with unit and last alias
   return `${unitParsed} ${aliases.at(-1) as string}`;
 };
+
+/**
+ * Parses a string representing a date and returns a Date object.
+ *
+ * @param dateString - The string representation of the date in the format "dd/mm/yyyy, hh:mm:ss".
+ * @returns The parsed Date object.
+ */
+export const formatDateFromString = (dateString: string) => {
+  // Split the input string into the date and time components
+  const [fecha, tiempo] = dateString.split(", ");
+
+  // Split the date component into day, month, and year
+  const [day, month, year] = fecha.split("/");
+
+  // Split the time component into hour, minute, and second
+  const [hour, minute, second] = tiempo.split(":");
+
+  // Parse the components into numbers
+  const dayNumber = parseInt(day, 10);
+  const monthNumber = parseInt(month, 10) - 1;
+  const yearNumber = parseInt(year, 10);
+  const hourNumber = parseInt(hour, 10);
+  const minuteNumber = parseInt(minute, 10);
+  const secondNumber = parseInt(second, 10);
+
+  // Create a Date object using the parsed components
+  const dateObject = new Date(yearNumber, monthNumber, dayNumber, hourNumber, minuteNumber, secondNumber);
+
+  return dateObject;
+};
