@@ -40,7 +40,7 @@
     "lint:install": "npm install -g rome eslint"
   },
   "devDependencies": {
-    "@types/estree": "1.0.1",
+    "@types/estree": "1.0.6",
     "@types/node": "20.4.1",
     "eslint": "8.44.0",
     "eslint-config-prettier": "8.8.0",
