@@ -49,6 +49,6 @@
     "eslint-plugin-import": "2.27.5",
     "nodemon": "3.0.1",
     "ts-node-dev": "2.0.0",
-    "typescript": "5.1.6"
+    "typescript": "5.6.3"
   }
 }
